@@ -64,7 +64,7 @@ export function SearchBar({ size = 'default', autoFocus = false }: SearchBarProp
     const sanitized = sanitizeSearchQuery(query);
     if (sanitized.length >= SEARCH_MIN_CHARS) {
       setIsOpen(false);
-      router.push(`/search?q=${encodeURIComponent(sanitized)}`);
+      router.push(`/cauta?q=${encodeURIComponent(sanitized)}`);
     }
   };
 
@@ -138,7 +138,7 @@ export function SearchBar({ size = 'default', autoFocus = false }: SearchBarProp
                 {results.map((station) => (
                   <li key={station.slug}>
                     <Link
-                      href={`/station/${station.slug}`}
+                      href={`/radio/${station.slug}-online`}
                       onClick={() => setIsOpen(false)}
                       className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-muted"
                     >
@@ -169,7 +169,7 @@ export function SearchBar({ size = 'default', autoFocus = false }: SearchBarProp
                 ))}
               </ul>
               <Link
-                href={`/search?q=${encodeURIComponent(query)}`}
+                href={`/cauta?q=${encodeURIComponent(query)}`}
                 onClick={() => setIsOpen(false)}
                 className="block border-t border-border px-4 py-2.5 text-center text-sm font-medium text-primary hover:bg-muted"
               >

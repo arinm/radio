@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Posturile mele favorite',
   description: 'Lista ta de posturi de radio favorite. Adauga posturi la favorite pentru acces rapid.',
   robots: { index: false, follow: true },
-  alternates: { canonical: `${SITE_URL}/favorites` },
+  alternates: { canonical: `${SITE_URL}/radio-favorite` },
 };
 
 export default function FavoritesPage() {

@@ -46,7 +46,7 @@ export function GenreStories({ genres }: GenreStoriesProps) {
         {genres.map((genre) => (
           <Link
             key={genre.slug}
-            href={`/genre/${genre.slug}`}
+            href={`/radio-genuri/${genre.slug}`}
             className="flex shrink-0 flex-col items-center gap-1.5"
           >
             <div

@@ -61,7 +61,7 @@ export default async function HomePage() {
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-xl font-bold text-foreground sm:text-2xl">Toate posturile</h2>
           <Link
-            href="/browse"
+            href="/cauta-radio-romania"
             className="flex items-center gap-1 text-sm font-medium text-primary hover:underline"
           >
             Vezi toate

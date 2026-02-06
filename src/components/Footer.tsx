@@ -27,17 +27,17 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-foreground">Descopera</h3>
             <ul className="mt-3 space-y-2">
               <li>
-                <Link href="/browse" className="text-sm text-muted-foreground hover:text-foreground">
+                <Link href="/cauta-radio-romania" className="text-sm text-muted-foreground hover:text-foreground">
                   Toate posturile
                 </Link>
               </li>
               <li>
-                <Link href="/genre" className="text-sm text-muted-foreground hover:text-foreground">
+                <Link href="/radio-genuri" className="text-sm text-muted-foreground hover:text-foreground">
                   Genuri muzicale
                 </Link>
               </li>
               <li>
-                <Link href="/favorites" className="text-sm text-muted-foreground hover:text-foreground">
+                <Link href="/radio-favorite" className="text-sm text-muted-foreground hover:text-foreground">
                   Favorite
                 </Link>
               </li>
@@ -49,27 +49,27 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-foreground">Genuri populare</h3>
             <ul className="mt-3 space-y-2">
               <li>
-                <Link href="/genre/pop" className="text-sm text-muted-foreground hover:text-foreground">
+                <Link href="/radio-genuri/pop" className="text-sm text-muted-foreground hover:text-foreground">
                   Pop
                 </Link>
               </li>
               <li>
-                <Link href="/genre/rock" className="text-sm text-muted-foreground hover:text-foreground">
+                <Link href="/radio-genuri/rock" className="text-sm text-muted-foreground hover:text-foreground">
                   Rock
                 </Link>
               </li>
               <li>
-                <Link href="/genre/manele" className="text-sm text-muted-foreground hover:text-foreground">
+                <Link href="/radio-genuri/manele" className="text-sm text-muted-foreground hover:text-foreground">
                   Manele
                 </Link>
               </li>
               <li>
-                <Link href="/genre/stiri" className="text-sm text-muted-foreground hover:text-foreground">
+                <Link href="/radio-genuri/stiri" className="text-sm text-muted-foreground hover:text-foreground">
                   Stiri
                 </Link>
               </li>
               <li>
-                <Link href="/genre/dance" className="text-sm text-muted-foreground hover:text-foreground">
+                <Link href="/radio-genuri/dance" className="text-sm text-muted-foreground hover:text-foreground">
                   Dance
                 </Link>
               </li>

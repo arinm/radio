@@ -18,7 +18,7 @@ function buildCsp(): string {
     "default-src 'self'",
     // Scripts: self + Next.js inline scripts (unsafe-inline needed for Next.js hydration)
     // In production, use nonces instead of unsafe-inline
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com",
     // Styles: self + inline styles (Tailwind generates inline styles)
     "style-src 'self' 'unsafe-inline'",
     // Images: self + data URIs (for base64 logos) + any https source (station logos)

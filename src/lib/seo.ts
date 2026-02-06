@@ -42,11 +42,11 @@ export function genreDescription(genre: Genre): string {
 
 // Canonical URLs
 export function stationCanonical(slug: string): string {
-  return `${SITE_URL}/station/${slug}`;
+  return `${SITE_URL}/radio/${slug}-online`;
 }
 
 export function genreCanonical(slug: string): string {
-  return `${SITE_URL}/genre/${slug}`;
+  return `${SITE_URL}/radio-genuri/${slug}`;
 }
 
 // JSON-LD Structured Data
@@ -104,7 +104,7 @@ export function websiteJsonLd() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+        urlTemplate: `${SITE_URL}/cauta?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },

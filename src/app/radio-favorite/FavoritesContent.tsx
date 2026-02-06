@@ -53,7 +53,7 @@ export function FavoritesContent() {
           Apasa pe iconita de inima de pe orice post de radio pentru a-l adauga la favorite.
         </p>
         <Link
-          href="/browse"
+          href="/cauta-radio-romania"
           className="mt-6 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90"
         >
           Descopera posturi de radio

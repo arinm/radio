@@ -1,43 +1,42 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { CONSENT_COOKIE_NAME } from '@/lib/constants';
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
-export function GoogleAnalytics() {
+export function AnalyticsWrapper() {
   const loaded = useRef(false);
 
   useEffect(() => {
-    // Skip if no GA ID or already loaded
     if (!GA_ID || loaded.current) return;
 
-    // Check for analytics consent
-    const hasConsent = () => {
+    const checkConsent = (): boolean => {
       try {
         const cookies = document.cookie.split(';');
-        const consent = cookies.find((c) => c.trim().startsWith('radiovibe_consent='));
-        if (consent) {
-          const value = JSON.parse(decodeURIComponent(consent.split('=')[1]));
+        const consentCookie = cookies.find((c) => c.trim().startsWith(`${CONSENT_COOKIE_NAME}=`));
+        if (consentCookie) {
+          const value = JSON.parse(decodeURIComponent(consentCookie.split('=')[1]));
           return value.analytics === true;
         }
       } catch {
-        // ignore
+        // Invalid cookie
       }
       return false;
     };
 
     const loadGA = () => {
-      if (loaded.current || !hasConsent()) return;
+      if (loaded.current || !checkConsent()) return;
       loaded.current = true;
 
-      // Add gtag script
+      // Create and inject gtag script
       const script = document.createElement('script');
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
       document.head.appendChild(script);
 
-      // Initialize dataLayer
-      const w = window as Window & { dataLayer?: unknown[] };
+      // Initialize gtag
+      const w = window as typeof window & { dataLayer: unknown[] };
       w.dataLayer = w.dataLayer || [];
       w.dataLayer.push(['js', new Date()]);
       w.dataLayer.push(['config', GA_ID, { anonymize_ip: true }]);

@@ -64,6 +64,52 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true,
       },
+      // Old routes to new SEO-friendly routes
+      {
+        source: '/browse',
+        destination: '/cauta-radio-romania',
+        permanent: true,
+      },
+      {
+        source: '/station/:slug',
+        destination: '/radio/:slug-online',
+        permanent: true,
+      },
+      {
+        source: '/genre',
+        destination: '/radio-genuri',
+        permanent: true,
+      },
+      {
+        source: '/genre/:slug',
+        destination: '/radio-genuri/:slug',
+        permanent: true,
+      },
+      {
+        source: '/gen',
+        destination: '/radio-genuri',
+        permanent: true,
+      },
+      {
+        source: '/gen/:slug',
+        destination: '/radio-genuri/:slug',
+        permanent: true,
+      },
+      {
+        source: '/favorites',
+        destination: '/radio-favorite',
+        permanent: true,
+      },
+      {
+        source: '/favorite',
+        destination: '/radio-favorite',
+        permanent: true,
+      },
+      {
+        source: '/search',
+        destination: '/cauta',
+        permanent: true,
+      },
     ];
   },
 

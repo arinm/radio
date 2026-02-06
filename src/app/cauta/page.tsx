@@ -20,7 +20,7 @@ export async function generateMetadata({ searchParams }: SearchPageProps): Promi
       ? `Rezultatele cautarii pentru "${query}" - posturi de radio online din Romania.`
       : 'Cauta posturi de radio online din Romania dupa nume, gen muzical sau oras.',
     robots: { index: false, follow: true }, // Don't index search results
-    alternates: { canonical: `${SITE_URL}/search` },
+    alternates: { canonical: `${SITE_URL}/cauta` },
   };
 }
 
@@ -58,7 +58,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               <Pagination
                 currentPage={page}
                 totalPages={totalPages}
-                basePath="/search"
+                basePath="/cauta"
                 searchParams={{ q: query }}
               />
             </div>

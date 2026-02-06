@@ -27,7 +27,7 @@ export function MiniPlayer() {
       <div className="mx-auto flex h-[72px] max-w-7xl items-center gap-3 px-4">
         {/* Station info */}
         <Link
-          href={`/station/${station.slug}`}
+          href={`/radio/${station.slug}-online`}
           className="flex min-w-0 flex-1 items-center gap-3"
         >
           <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-primary/10">

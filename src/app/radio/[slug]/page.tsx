@@ -35,17 +35,24 @@ interface StationPageProps {
 
 export async function generateStaticParams() {
   const slugs = await getAllStationSlugs();
-  return slugs.map((slug) => ({ slug }));
+  // Add -online suffix to all slugs for SEO-friendly URLs
+  return slugs.map((slug) => ({ slug: `${slug}-online` }));
+}
+
+// Helper to strip -online suffix from URL slug to get DB slug
+function getDbSlug(urlSlug: string): string {
+  return urlSlug.endsWith('-online') ? urlSlug.slice(0, -7) : urlSlug;
 }
 
 export async function generateMetadata({ params }: StationPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const station = await getStationBySlug(slug);
+  const { slug: urlSlug } = await params;
+  const dbSlug = getDbSlug(urlSlug);
+  const station = await getStationBySlug(dbSlug);
   if (!station) return { title: 'Post de radio negasit' };
 
   const title = stationTitle(station);
   const description = stationDescription(station);
-  const canonical = stationCanonical(slug);
+  const canonical = stationCanonical(station.slug);
 
   return {
     title,
@@ -57,15 +64,16 @@ export async function generateMetadata({ params }: StationPageProps): Promise<Me
 }
 
 export default async function StationPage({ params }: StationPageProps) {
-  const { slug } = await params;
-  const station = await getStationBySlug(slug);
+  const { slug: urlSlug } = await params;
+  const dbSlug = getDbSlug(urlSlug);
+  const station = await getStationBySlug(dbSlug);
   if (!station) notFound();
 
   const similarStations = await getSimilarStations(station);
 
   const breadcrumbs = [
     { name: 'Acasa', url: SITE_URL },
-    { name: 'Posturi radio', url: `${SITE_URL}/browse` },
+    { name: 'Posturi radio', url: `${SITE_URL}/cauta-radio-romania` },
     { name: station.name, url: stationCanonical(station.slug) },
   ];
 
@@ -149,7 +157,7 @@ export default async function StationPage({ params }: StationPageProps) {
               </li>
               <li aria-hidden="true">/</li>
               <li>
-                <Link href="/browse" className="hover:text-foreground transition-colors">Posturi radio</Link>
+                <Link href="/cauta-radio-romania" className="hover:text-foreground transition-colors">Posturi radio</Link>
               </li>
               <li aria-hidden="true">/</li>
               <li className="truncate font-medium text-foreground">{station.name}</li>
@@ -222,7 +230,7 @@ export default async function StationPage({ params }: StationPageProps) {
                       return (
                         <Link
                           key={genre}
-                          href={`/genre/${genre}`}
+                          href={`/radio-genuri/${genre}`}
                           className="rounded-full px-4 py-1.5 text-sm font-medium transition-all hover:scale-105"
                           style={{
                             backgroundColor: `${bc}18`,

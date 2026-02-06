@@ -16,7 +16,7 @@ export function GenreCard({ genre }: GenreCardProps) {
 
   return (
     <Link
-      href={`/genre/${genre.slug}`}
+      href={`/radio-genuri/${genre.slug}`}
       className="group flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-all hover:border-primary/30 hover:shadow-md"
     >
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/5 transition-colors group-hover:bg-primary/10">

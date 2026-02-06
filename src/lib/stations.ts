@@ -117,17 +117,17 @@ export async function getStationBySlug(slug: string): Promise<Station | null> {
 
 /**
  * Search stations by name, genre, or city.
- * Uses raw SQL for SQLite compatibility with case-insensitive search.
+ * Uses raw SQL with PostgreSQL ILIKE for case-insensitive search.
  */
 export async function searchStations(
   query: string,
   page = 1,
   pageSize = DEFAULT_PAGE_SIZE,
 ): Promise<SearchResult> {
-  const searchTerm = `%${query.toLowerCase()}%`;
+  const searchTerm = `%${query}%`;
   const offset = (page - 1) * pageSize;
 
-  // Use raw query for SQLite case-insensitive search
+  // Use raw query for PostgreSQL case-insensitive search with ILIKE
   const stations = await prisma.$queryRaw<Array<{
     id: string;
     name: string;
@@ -154,26 +154,26 @@ export async function searchStations(
     createdAt: Date;
     updatedAt: Date;
   }>>`
-    SELECT * FROM Station
-    WHERE isActive = 1
+    SELECT * FROM "Station"
+    WHERE "isActive" = true
     AND (
-      LOWER(name) LIKE ${searchTerm}
-      OR LOWER(description) LIKE ${searchTerm}
-      OR LOWER(city) LIKE ${searchTerm}
-      OR LOWER(genres) LIKE ${searchTerm}
+      name ILIKE ${searchTerm}
+      OR description ILIKE ${searchTerm}
+      OR city ILIKE ${searchTerm}
+      OR genres ILIKE ${searchTerm}
     )
-    ORDER BY listenScore DESC
+    ORDER BY "listenScore" DESC
     LIMIT ${pageSize} OFFSET ${offset}
   `;
 
-  const countResult = await prisma.$queryRaw<Array<{ count: number }>>`
-    SELECT COUNT(*) as count FROM Station
-    WHERE isActive = 1
+  const countResult = await prisma.$queryRaw<Array<{ count: bigint }>>`
+    SELECT COUNT(*) as count FROM "Station"
+    WHERE "isActive" = true
     AND (
-      LOWER(name) LIKE ${searchTerm}
-      OR LOWER(description) LIKE ${searchTerm}
-      OR LOWER(city) LIKE ${searchTerm}
-      OR LOWER(genres) LIKE ${searchTerm}
+      name ILIKE ${searchTerm}
+      OR description ILIKE ${searchTerm}
+      OR city ILIKE ${searchTerm}
+      OR genres ILIKE ${searchTerm}
     )
   `;
 

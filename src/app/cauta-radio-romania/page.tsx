@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: browseTitle(),
   description:
     'Lista completa cu toate posturile de radio online din Romania. Alege si asculta live postul preferat.',
-  alternates: { canonical: `${SITE_URL}/browse` },
+  alternates: { canonical: `${SITE_URL}/cauta-radio-romania` },
 };
 
 interface BrowsePageProps {
@@ -26,7 +26,7 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
 
   const breadcrumbs = [
     { name: 'Acasa', url: SITE_URL },
-    { name: 'Toate posturile', url: `${SITE_URL}/browse` },
+    { name: 'Toate posturile', url: `${SITE_URL}/cauta-radio-romania` },
   ];
 
   return (
@@ -37,7 +37,7 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">Toate Posturile de Radio Online din Romania</h1>
+        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">Posturile de Radio Online din Romania</h1>
         <p className="mt-2 text-lg text-muted-foreground">
           {result.total} posturi de radio online din Romania.
         </p>
@@ -48,7 +48,7 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
 
         {totalPages > 1 && (
           <div className="mt-8">
-            <Pagination currentPage={page} totalPages={totalPages} basePath="/browse" />
+            <Pagination currentPage={page} totalPages={totalPages} basePath="/cauta-radio-romania" />
           </div>
         )}
       </div>

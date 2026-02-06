@@ -38,7 +38,7 @@ export function StationCard({ station }: StationCardProps) {
 
   return (
     <article className="group relative overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary/30 hover:shadow-lg">
-      <Link href={`/station/${station.slug}`} className="block">
+      <Link href={`/radio/${station.slug}-online`} className="block">
         {/* Logo area - square */}
         <div className="relative flex aspect-square items-center justify-center bg-gradient-to-br from-primary/5 to-primary/10 p-5">
           {station.logoUrl ? (

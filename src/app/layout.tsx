@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer';
 import { MiniPlayer } from '@/components/MiniPlayer';
 import { ConsentBanner } from '@/components/ConsentBanner';
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
-import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import { AnalyticsWrapper } from '@/components/AnalyticsWrapper';
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, DEFAULT_LANGUAGE } from '@/lib/constants';
 import './globals.css';
 
@@ -100,7 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <ConsentBanner />
             <ServiceWorkerRegister />
-            <GoogleAnalytics />
+            <AnalyticsWrapper />
           </PlayerProvider>
         </ThemeProvider>
       </body>

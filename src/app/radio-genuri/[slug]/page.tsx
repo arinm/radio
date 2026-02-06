@@ -74,7 +74,7 @@ export default async function GenrePage({ params, searchParams }: GenrePageProps
 
   const breadcrumbs = [
     { name: 'Acasa', url: SITE_URL },
-    { name: 'Genuri muzicale', url: `${SITE_URL}/genre` },
+    { name: 'Genuri muzicale', url: `${SITE_URL}/radio-genuri` },
     { name: genre.nameRo, url: genreCanonical(slug) },
   ];
 
@@ -105,7 +105,7 @@ export default async function GenrePage({ params, searchParams }: GenrePageProps
           <ol className="flex items-center gap-1.5 text-sm text-muted-foreground">
             <li><Link href="/" className="hover:text-foreground">Acasa</Link></li>
             <li aria-hidden="true">/</li>
-            <li><Link href="/genre" className="hover:text-foreground">Genuri</Link></li>
+            <li><Link href="/radio-genuri" className="hover:text-foreground">Genuri</Link></li>
             <li aria-hidden="true">/</li>
             <li className="font-medium text-foreground">{genre.nameRo}</li>
           </ol>
@@ -130,7 +130,7 @@ export default async function GenrePage({ params, searchParams }: GenrePageProps
             <Pagination
               currentPage={page}
               totalPages={totalPages}
-              basePath={`/genre/${slug}`}
+              basePath={`/radio-genuri/${slug}`}
             />
           </div>
         )}

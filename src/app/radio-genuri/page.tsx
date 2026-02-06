@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: `Genuri Muzicale - Posturi Radio pe Categorii`,
   description:
     'Descopera posturi de radio online din Romania pe genuri muzicale: pop, rock, manele, muzica populara, dance, hip-hop, jazz, stiri si multe altele.',
-  alternates: { canonical: `${SITE_URL}/genre` },
+  alternates: { canonical: `${SITE_URL}/radio-genuri` },
 };
 
 export default async function GenresPage() {
@@ -18,7 +18,7 @@ export default async function GenresPage() {
 
   const breadcrumbs = [
     { name: 'Acasa', url: SITE_URL },
-    { name: 'Genuri muzicale', url: `${SITE_URL}/genre` },
+    { name: 'Genuri muzicale', url: `${SITE_URL}/radio-genuri` },
   ];
 
   return (

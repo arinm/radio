@@ -20,19 +20,19 @@ export function Header() {
         {/* Navigation */}
         <nav className="hidden items-center gap-1 md:flex" aria-label="Navigare principala">
           <Link
-            href="/browse"
+            href="/cauta-radio-romania"
             className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             Toate posturile
           </Link>
           <Link
-            href="/genre"
+            href="/radio-genuri"
             className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             Genuri
           </Link>
           <Link
-            href="/favorites"
+            href="/radio-favorite"
             className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             Favorite
