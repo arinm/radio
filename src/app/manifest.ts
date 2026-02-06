@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Radio Online Romania',
-    short_name: 'Radio Online',
+    name: 'radiovibe',
+    short_name: 'radiovibe',
     description:
       'Asculta radio online din Romania. Peste 60 de posturi de radio romanesti live, muzica, stiri, sport si divertisment — gratuit si fara reclame.',
     start_url: '/',
