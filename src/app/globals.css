@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #0a0a0a;
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #737373;
+  --color-border: #e5e5e5;
+  --color-primary: #2563eb;
+  --color-primary-foreground: #ffffff;
+  --color-accent: #f59e0b;
+  --color-accent-foreground: #0a0a0a;
+  --color-destructive: #ef4444;
+  --color-card: #ffffff;
+  --color-card-foreground: #0a0a0a;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  .dark {
+    --color-background: #0a0a0a;
+    --color-foreground: #fafafa;
+    --color-muted: #1a1a1a;
+    --color-muted-foreground: #a3a3a3;
+    --color-border: #262626;
+    --color-primary: #3b82f6;
+    --color-primary-foreground: #ffffff;
+    --color-card: #141414;
+    --color-card-foreground: #fafafa;
+  }
+}
+
+/* Smooth transitions for theme switching */
+html {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Global focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Audio player progress bar styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-border);
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Skeleton loading animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-muted) 25%, var(--color-border) 50%, var(--color-muted) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Mini player fixed at bottom - leave space */
+body {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+body:has(.mini-player) {
+  padding-bottom: 80px;
+}

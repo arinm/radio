@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  // For production, switch to PostgreSQL:
+  // provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Station {
+  id              String   @id @default(cuid())
+  name            String
+  slug            String   @unique
+  streamUrl       String
+  streamUrlBackup String?
+  homepage        String?
+  description     String?
+  genres          String   // JSON array stored as string (SQLite compat; use Json type with PostgreSQL)
+  city            String?
+  region          String?
+  language        String   @default("ro")
+  logoUrl         String?
+  brandColor      String?  // Hex color extracted from logo (e.g. "#E31E24")
+  bitrate         Int?
+  codec           String?
+  frequency       String?
+  isActive        Boolean  @default(true)
+  isFeatured      Boolean  @default(false)
+  listenScore     Int      @default(0) // Popularity score for ranking
+  lastCheckedAt   DateTime?
+  status          String   @default("unknown") // online | offline | unknown | error
+  socialLinks     String?  // JSON stored as string
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([slug])
+  @@index([isActive])
+  @@index([isFeatured])
+  @@index([listenScore])
+  @@index([city])
+  @@index([region])
+  @@index([status])
+}
