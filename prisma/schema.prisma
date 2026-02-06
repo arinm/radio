@@ -3,9 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  // For production, switch to PostgreSQL:
-  // provider = "postgresql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -17,7 +15,7 @@ model Station {
   streamUrlBackup String?
   homepage        String?
   description     String?
-  genres          String   // JSON array stored as string (SQLite compat; use Json type with PostgreSQL)
+  genres          String   // JSON array stored as string
   city            String?
   region          String?
   language        String   @default("ro")
