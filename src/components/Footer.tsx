@@ -41,6 +41,11 @@ export function Footer() {
                   Favorite
                 </Link>
               </li>
+              <li>
+                <Link href="/instaleaza" className="text-sm text-muted-foreground hover:text-foreground">
+                  Instaleaza aplicatia
+                </Link>
+              </li>
             </ul>
           </div>
 

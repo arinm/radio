@@ -30,18 +30,24 @@ const nextConfig: NextConfig = {
   // Performance: Output standalone for Docker deployments
   output: 'standalone',
 
-  // Security: Strict Content Security Policy headers are set in middleware.ts
-  // Additional headers for static assets
+  // Security headers
   async headers() {
+    const securityHeaders = [
+      { key: 'X-DNS-Prefetch-Control', value: 'on' },
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'X-Frame-Options', value: 'DENY' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'X-XSS-Protection', value: '1; mode=block' },
+      {
+        key: 'Permissions-Policy',
+        value: 'camera=(), microphone=(), geolocation=(), payment=()',
+      },
+    ];
+
     return [
       {
         source: '/(.*)',
-        headers: [
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-        ],
+        headers: securityHeaders,
       },
       {
         // Cache static assets aggressively

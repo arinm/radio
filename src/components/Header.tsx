@@ -1,7 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import { Radio } from 'lucide-react';
 import { SearchBar } from './SearchBar';
 import { ThemeToggle } from './ThemeToggle';
+import { MobileMenu } from './MobileMenu';
 
 export function Header() {
   return (
@@ -44,8 +47,13 @@ export function Header() {
           <SearchBar />
         </div>
 
-        {/* Theme toggle */}
-        <ThemeToggle />
+        {/* Theme toggle - hidden on mobile */}
+        <div className="hidden md:block">
+          <ThemeToggle />
+        </div>
+
+        {/* Mobile menu - shown on mobile */}
+        <MobileMenu />
       </div>
     </header>
   );
