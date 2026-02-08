@@ -7,8 +7,8 @@
  * These are the stations' own public streaming endpoints.
  *
  * UTM tracking for partnerships:
- * When linking to partner sites like myradioonline.ro, use:
- * ?utm_source=radioonline.ro&utm_medium=referral&utm_campaign=partnership
+ * When linking to partner sites, use:
+ * ?utm_source=radiovibe.ro&utm_medium=referral&utm_campaign=partnership
  */
 
 export interface SeedStation {

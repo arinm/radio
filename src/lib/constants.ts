@@ -1,5 +1,5 @@
 export const SITE_NAME = 'Radio Online Romania';
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://radioonline.ro';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://radiovibe.ro';
 export const SITE_DESCRIPTION =
   'Asculta radio online din Romania. Peste 100 de posturi de radio romanesti live, muzica, stiri, sport si divertisment.';
 

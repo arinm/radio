@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '**',
         // In production, restrict to known logo CDN domains:
-        // hostname: 'cdn.radioonline.ro',
+        // hostname: 'cdn.radiovibe.ro',
       },
     ],
   },

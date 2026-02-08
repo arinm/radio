@@ -27,12 +27,13 @@
 | Route | Type | Revalidation | Purpose |
 |-------|------|-------------|---------|
 | `/` | SSG | 300s | Home — hero, search, featured, genres |
-| `/browse` | Dynamic | 300s | All stations, paginated |
-| `/genre` | SSG | 3600s | Genre listing |
-| `/genre/[slug]` | SSG+ISR | 300s | Stations by genre, paginated |
-| `/station/[slug]` | SSG+ISR | 3600s | Station detail page |
-| `/search` | Dynamic | — | Search results (noindex) |
-| `/favorites` | Static shell | — | Client-side favorites (noindex) |
+| `/cauta-radio-romania` | Dynamic | 300s | All stations, paginated |
+| `/radio-genuri` | SSG | 3600s | Genre listing |
+| `/radio-genuri/[slug]` | SSG+ISR | 300s | Stations by genre, paginated |
+| `/radio/[slug]` | SSG+ISR | 3600s | Station detail page |
+| `/cauta` | Dynamic | — | Search results (noindex) |
+| `/radio-favorite` | Static shell | — | Client-side favorites (noindex) |
+| `/instaleaza` | Static | — | PWA install instructions |
 | `/politica-confidentialitate` | Static | — | Privacy Policy |
 | `/politica-cookies` | Static | — | Cookie Policy |
 | `/termeni-conditii` | Static | — | Terms & Conditions |
@@ -130,7 +131,7 @@ Station {
 3. Set environment variables:
    ```
    DATABASE_URL=postgresql://...
-   NEXT_PUBLIC_SITE_URL=https://radioonline.ro
+   NEXT_PUBLIC_SITE_URL=https://radiovibe.ro
    NEXT_PUBLIC_SITE_NAME=Radio Online Romania
    ```
 4. Deploy — Vercel handles build, CDN, edge functions automatically
@@ -145,7 +146,7 @@ docker build -t radio-online .
 # Run
 docker run -p 3000:3000 \
   -e DATABASE_URL="postgresql://..." \
-  -e NEXT_PUBLIC_SITE_URL="https://radioonline.ro" \
+  -e NEXT_PUBLIC_SITE_URL="https://radiovibe.ro" \
   radio-online
 ```
 
@@ -159,7 +160,7 @@ Put behind Nginx/Caddy reverse proxy with:
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `DATABASE_URL` | Yes | `file:./dev.db` | Database connection string |
-| `NEXT_PUBLIC_SITE_URL` | Yes | `https://radioonline.ro` | Public site URL |
+| `NEXT_PUBLIC_SITE_URL` | Yes | `https://radiovibe.ro` | Public site URL |
 | `NEXT_PUBLIC_SITE_NAME` | No | `Radio Online Romania` | Site name |
 | `RATE_LIMIT_MAX_REQUESTS` | No | `60` | API rate limit per window |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | No | — | Google Analytics (after consent) |
@@ -208,7 +209,7 @@ Station page:
   "@context": "https://schema.org",
   "@type": "RadioStation",
   "name": "Kiss FM",
-  "url": "https://radioonline.ro/station/kiss-fm",
+  "url": "https://radiovibe.ro/radio/kiss-fm-online",
   "description": "...",
   "address": {
     "@type": "PostalAddress",
@@ -242,7 +243,7 @@ Station page:
 
 ### User Rights (GDPR)
 - Access, rectification, erasure, restriction, portability, objection
-- Contact: privacy@radioonline.ro
+- Contact: privacy@radiovibe.ro
 - Supervisory authority: ANSPDCP (www.dataprotection.ro)
 
 ### Data Minimization

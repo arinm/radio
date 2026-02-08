@@ -119,7 +119,7 @@ export async function safeFetch(
       signal: controller.signal,
       redirect: opts.maxRedirects > 0 ? 'follow' : 'error',
       headers: {
-        'User-Agent': 'RadioOnlineRO-HealthCheck/1.0',
+        'User-Agent': 'RadioVibe-HealthCheck/1.0',
       },
     });
 

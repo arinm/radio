@@ -19,16 +19,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${SITE_URL}/browse`,
+      url: `${SITE_URL}/cauta-radio-romania`,
       lastModified: now,
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/genre`,
+      url: `${SITE_URL}/radio-genuri`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/radio-favorite`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+    {
+      url: `${SITE_URL}/instaleaza`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.4,
     },
     {
       url: `${SITE_URL}/politica-confidentialitate`,
@@ -58,7 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Station pages — high priority for SEO
   const stationPages: MetadataRoute.Sitemap = stationSlugs.map((slug) => ({
-    url: `${SITE_URL}/station/${slug}`,
+    url: `${SITE_URL}/radio/${slug}-online`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
@@ -66,7 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Genre pages
   const genrePages: MetadataRoute.Sitemap = genres.map((genre) => ({
-    url: `${SITE_URL}/genre/${genre.slug}`,
+    url: `${SITE_URL}/radio-genuri/${genre.slug}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.7,
