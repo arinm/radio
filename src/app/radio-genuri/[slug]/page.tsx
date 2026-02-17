@@ -117,6 +117,11 @@ export default async function GenrePage({ params, searchParams }: GenrePageProps
         <p className="mt-2 text-lg text-muted-foreground">
           {genre.description} ({genre.stationCount} posturi)
         </p>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+          Asculta cele mai bune posturi de radio {genre.nameRo.toLowerCase()} din Romania,
+          live si gratuit. Alege din {genre.stationCount} posturi disponibile si apasa play
+          pentru a incepe sa asculti direct din browser, fara aplicatii sau inregistrare.
+        </p>
 
         <div className="mt-8">
           <StationGrid

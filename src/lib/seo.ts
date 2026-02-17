@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, GENRES } from './constants';
+import { SITE_NAME, BRAND_NAME, SITE_URL, SITE_DESCRIPTION, GENRES } from './constants';
 import type { Station, Genre, FAQItem } from '@/types';
 
 /**
@@ -8,7 +8,8 @@ import type { Station, Genre, FAQItem } from '@/types';
 
 // Title patterns
 export function stationTitle(station: Station): string {
-  return `${station.name} - Asculta Live Online | ${SITE_NAME}`;
+  const city = station.city ? ` din ${station.city}` : '';
+  return `${station.name}${city} - Asculta Live Online | ${SITE_NAME}`;
 }
 
 export function genreTitle(genre: Genre): string {
@@ -198,8 +199,8 @@ export function faqJsonLd(faqs: FAQItem[]) {
 export function generateHomeFAQs(stationCount: number): FAQItem[] {
   return [
     {
-      question: 'Ce este Radio Online Romania?',
-      answer: `Radio Online Romania este o platforma gratuita unde poti asculta ${stationCount} posturi de radio romanesti live, direct din browser. Oferim muzica, stiri, sport si divertisment non-stop.`,
+      question: `Ce este ${BRAND_NAME}?`,
+      answer: `${BRAND_NAME} este o platforma gratuita de radio online din Romania unde poti asculta ${stationCount} posturi de radio romanesti live, direct din browser. Oferim muzica, stiri, sport si divertisment non-stop.`,
     },
     {
       question: 'Este gratuit sa ascult radio online?',

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Radio } from 'lucide-react';
-import { SITE_NAME } from '@/lib/constants';
+import { BRAND_NAME } from '@/lib/constants';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -112,7 +112,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-10 border-t border-border pt-6">
           <p className="text-center text-xs text-muted-foreground">
-            &copy; {currentYear} {SITE_NAME}. Toate drepturile rezervate.
+            &copy; {currentYear} {BRAND_NAME}. Toate drepturile rezervate.
             Streamurile audio apartin posturilor de radio respective.
           </p>
         </div>

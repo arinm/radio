@@ -39,6 +39,24 @@ export default async function GenresPage() {
             <GenreCard key={genre.slug} genre={genre} />
           ))}
         </div>
+
+        <div className="mt-12 max-w-3xl space-y-3 text-sm leading-relaxed text-muted-foreground">
+          <h2 className="text-lg font-bold text-foreground">
+            Descopera radio online pe genuri muzicale
+          </h2>
+          <p>
+            Platforma noastra ofera o varietate de genuri muzicale pentru toate gusturile.
+            De la radio pop cu cele mai noi hituri romanesti si internationale, la radio rock
+            cu muzica clasica si alternativa, radio manele, muzica populara si folclor
+            romanesc, dance si electronica, hip-hop si rap, jazz si blues, muzica clasica,
+            si posturi de radio cu stiri si informatii din Romania.
+          </p>
+          <p>
+            Fiecare categorie contine posturi de radio selectate care transmit non-stop,
+            24 de ore din 24, 7 zile din 7. Toate streamurile sunt gratuite si pot fi
+            ascultate direct din browser, fara aplicatii sau inregistrare.
+          </p>
+        </div>
       </div>
     </>
   );
