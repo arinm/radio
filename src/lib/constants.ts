@@ -2,7 +2,7 @@ export const SITE_NAME = 'Radio Online Romania';
 export const BRAND_NAME = 'radiovibe';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://radiovibe.ro';
 export const SITE_DESCRIPTION =
-  'Asculta radio online din Romania. Peste 100 de posturi de radio romanesti live, muzica, stiri, sport si divertisment.';
+  'Asculta radio online din Romania gratuit. Peste 60 de posturi de radio romanesti live — muzica pop, rock, manele, dance, stiri si sport, 24/7, fara inregistrare.';
 
 export const DEFAULT_LOCALE = 'ro';
 export const DEFAULT_LANGUAGE = 'ro-RO';

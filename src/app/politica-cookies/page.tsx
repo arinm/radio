@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Politica de Cookie-uri',
   description: `Politica de cookie-uri a ${SITE_NAME}. Informatii despre tipurile de cookie-uri utilizate si cum le puteti gestiona.`,
   alternates: { canonical: `${SITE_URL}/politica-cookies` },
+  robots: { index: false, follow: true },
 };
 
 export default function CookiePolicyPage() {

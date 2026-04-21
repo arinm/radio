@@ -37,6 +37,16 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/radio-orase" className="text-sm text-muted-foreground hover:text-foreground">
+                  Radio pe orase
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground">
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link href="/radio-favorite" className="text-sm text-muted-foreground hover:text-foreground">
                   Favorite
                 </Link>

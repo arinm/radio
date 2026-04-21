@@ -3,8 +3,9 @@ import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Politica de Confidentialitate',
-  description: `Politica de confidentialitate a ${SITE_NAME}. Informatii despre prelucrarea datelor personale conform GDPR.`,
+  description: `Politica de confidentialitate a ${SITE_NAME}. Informatii despre prelucrarea datelor personale conform GDPR si drepturile utilizatorilor.`,
   alternates: { canonical: `${SITE_URL}/politica-confidentialitate` },
+  robots: { index: false, follow: true },
 };
 
 export default function PrivacyPolicyPage() {

@@ -21,7 +21,7 @@ export function homeTitle(): string {
 }
 
 export function browseTitle(): string {
-  return `Toate Posturile de Radio Online din Romania | ${SITE_NAME}`;
+  return `Toate Posturile Radio Online | ${SITE_NAME}`;
 }
 
 // Description patterns

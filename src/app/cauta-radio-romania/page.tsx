@@ -10,7 +10,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: browseTitle(),
   description:
-    'Lista completa cu toate posturile de radio online din Romania. Alege si asculta live postul preferat.',
+    'Lista completa cu 60+ posturi de radio online din Romania. Cauta si asculta live muzica pop, rock, manele, dance, stiri si sport — gratuit, pe orice dispozitiv.',
   alternates: { canonical: `${SITE_URL}/cauta-radio-romania` },
 };
 

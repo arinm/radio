@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Disclaimer',
-  description: `Disclaimer - declinarea responsabilitatii pentru ${SITE_NAME}.`,
+  title: 'Disclaimer - Declinare Raspundere',
+  description: `Disclaimer pentru ${SITE_NAME}. Declinarea raspunderii privind continutul audio, disponibilitatea streamurilor si drepturile de autor.`,
   alternates: { canonical: `${SITE_URL}/disclaimer` },
+  robots: { index: false, follow: true },
 };
 
 export default function DisclaimerPage() {

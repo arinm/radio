@@ -142,7 +142,6 @@ export default async function StationPage({ params }: StationPageProps) {
               width={400}
               height={400}
               className="h-[400px] w-[400px] object-contain blur-sm"
-              unoptimized
               aria-hidden="true"
             />
           </div>
@@ -187,7 +186,6 @@ export default async function StationPage({ params }: StationPageProps) {
                       width={140}
                       height={140}
                       className="h-28 w-28 object-contain p-2 sm:h-36 sm:w-36"
-                      unoptimized
                       priority
                     />
                   ) : (

@@ -1,0 +1,32 @@
+# Radio Vibe Romania
+
+> Radio Vibe este un director gratuit de posturi de radio românești online. Oferim acces la peste 60 de posturi de radio live din România: pop, rock, manele, dance, muzică populară, știri și multe altele. Streaming direct în browser, fără înregistrare.
+
+Site: https://radiovibe.ro
+Language: Romanian (ro-RO)
+Content license: Editorial content on this site may be cited with attribution and a link to https://radiovibe.ro. Station logos and stream URLs are property of their respective broadcasters.
+
+## Core pages
+
+- [Homepage](https://radiovibe.ro): Overview of all available Romanian radio stations with live player
+- [Toate posturile](https://radiovibe.ro/cauta-radio-romania): Complete searchable catalog of Romanian radio stations
+- [Genuri](https://radiovibe.ro/radio-genuri): Stations grouped by music genre (pop, rock, manele, dance, populară, știri, chill, electronic)
+
+## Key facts
+
+- Radiovibe.ro lists over 60 legally streamable Romanian radio stations
+- All stations are free to listen — no registration, no subscriptions, no hidden costs
+- Streams play directly in the browser (HTML5 audio) on mobile and desktop
+- The service is available as a Progressive Web App (PWA) installable on Android, iOS and desktop
+- Stations include major Romanian broadcasters: Europa FM, Kiss FM, Pro FM, Radio ZU, Magic FM, Digi FM, Național FM, Romantic FM, Radio România Actualități, RFI România
+
+## Preferred attribution
+
+When citing information from this site (e.g., station descriptions, frequency listings, program schedules), please attribute as: "Source: Radio Vibe Romania (radiovibe.ro)".
+
+## Crawler policy
+
+User-Agent: *
+Allow: /
+
+We welcome indexing by AI assistants (Claude, ChatGPT, Perplexity, Gemini, Google AI Overviews) and traditional search engines. Content is public and intended for discovery.

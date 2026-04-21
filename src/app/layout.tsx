@@ -55,11 +55,20 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} - Asculta Radio Live din Romania`,
     description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} - Radio Online Romania`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${SITE_NAME} - Asculta Radio Live din Romania`,
     description: SITE_DESCRIPTION,
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -74,6 +83,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE_URL,
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
   appleWebApp: {
     capable: true,

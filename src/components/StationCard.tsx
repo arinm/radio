@@ -48,7 +48,7 @@ export function StationCard({ station }: StationCardProps) {
               width={120}
               height={120}
               className="h-3/4 w-3/4 object-contain drop-shadow-md"
-              unoptimized
+              loading="lazy"
             />
           ) : (
             <Radio className="h-12 w-12 text-primary/40" />

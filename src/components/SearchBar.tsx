@@ -150,7 +150,6 @@ export function SearchBar({ size = 'default', autoFocus = false }: SearchBarProp
                             width={40}
                             height={40}
                             className="h-full w-full object-contain p-1"
-                            unoptimized
                           />
                         ) : (
                           <Radio className="h-5 w-5 text-primary" />

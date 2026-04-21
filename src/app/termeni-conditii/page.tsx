@@ -3,8 +3,9 @@ import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Termeni si Conditii',
-  description: `Termenii si conditiile de utilizare a ${SITE_NAME}.`,
+  description: `Termenii si conditiile de utilizare a ${SITE_NAME}. Drepturi, obligatii si limitarea raspunderii pentru utilizatorii platformei.`,
   alternates: { canonical: `${SITE_URL}/termeni-conditii` },
+  robots: { index: false, follow: true },
 };
 
 export default function TermsPage() {

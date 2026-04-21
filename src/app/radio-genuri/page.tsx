@@ -7,9 +7,9 @@ import { breadcrumbJsonLd } from '@/lib/seo';
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: `Genuri Muzicale - Posturi Radio pe Categorii`,
+  title: `Genuri de Radio Online - Descopera Posturi Preferate`,
   description:
-    'Descopera posturi de radio online din Romania pe genuri muzicale: pop, rock, manele, muzica populara, dance, hip-hop, jazz, stiri si multe altele.',
+    'Descopera posturi de radio online din Romania pe genuri muzicale: pop, rock, manele, muzica populara, dance, hip-hop, jazz, stiri si multe altele. Gratuit, 24/7.',
   alternates: { canonical: `${SITE_URL}/radio-genuri` },
 };
 
@@ -29,9 +29,9 @@ export default async function GenresPage() {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">Genuri muzicale</h1>
+        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">Genuri de Radio Online din Romania</h1>
         <p className="mt-2 text-lg text-muted-foreground">
-          Alege genul preferat si descopera posturi de radio online din Romania.
+          Alege genul preferat si descopera peste 60 de posturi de radio online din Romania — pop, rock, manele, dance, stiri si multe altele.
         </p>
 
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
