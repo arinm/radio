@@ -30,12 +30,12 @@ export const BLOG_POSTS: BlogPost[] = [
     description:
       'Descopera cele mai ascultate 10 posturi de radio din Romania in 2026. Kiss FM, Europa FM, Pro FM, Radio ZU si alte statii cu audienta record, toate live online.',
     publishedAt: '2026-04-15',
-    updatedAt: '2026-04-15',
+    updatedAt: '2026-06-26',
     author: 'Echipa radiovibe',
     readingMinutes: 8,
     tags: ['top', 'radiouri', '2026'],
     intro:
-      'Peisajul radiofonic romanesc in 2026 ramane dominat de cateva retele puternice care au stiut sa se reinventeze in era streamingului. In timp ce platformele on-demand precum Spotify si Apple Music castiga teren, posturile de radio isi pastreaza o audienta fidela datorita emisiunilor live, vocilor recognoscibile si mixului de muzica cu stiri. Am compilat topul celor mai ascultate 10 posturi din Romania in 2026, cu accent pe ceea ce le face speciale.',
+      'Cele mai ascultate posturi de radio din Romania in 2026 sunt Kiss FM, Europa FM, Pro FM, Radio ZU si Digi FM, urmate de Magic FM, Virgin Radio, Rock FM, Radio Romania Actualitati si National FM. Acest top acopera principalele genuri — pop-dance, stiri, rock, retro si manele — si reflecta retelele cu cea mai mare audienta la nivel national. Peisajul radiofonic romanesc ramane dominat de cateva retele puternice care s-au reinventat in era streamingului: in timp ce platformele on-demand precum Spotify castiga teren, posturile de radio isi pastreaza o audienta fidela datorita emisiunilor live, vocilor recognoscibile si mixului de muzica cu stiri.',
     sections: [
       {
         heading: '1. Kiss FM — liderul pop-dance',
@@ -110,7 +110,11 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     conclusion:
       'Topul celor mai ascultate posturi de radio din Romania in 2026 reflecta diversitatea gusturilor muzicale ale romanilor. De la pop international la manele, de la rock la stiri, fiecare ascultator gaseste postul potrivit. Toate cele 10 posturi enumerate sunt disponibile pe platforma noastra, live si gratuit, pe orice dispozitiv.',
-    relatedSlugs: ['radiouri-pop-romania', 'radiouri-rock-metal-romania', 'radio-manele-online-romania'],
+    relatedSlugs: [
+      'cele-mai-ascultate-melodii-radio-romania',
+      'radiouri-pop-romania',
+      'radiouri-rock-metal-romania',
+    ],
   },
   {
     slug: 'radiouri-pop-romania',
@@ -174,7 +178,11 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     conclusion:
       'Peisajul radiofonic pop din Romania ofera in 2026 o varietate reala, fiecare post avand personalitate proprie. Indiferent de preferinte — energie, stiri, personalitati sau productii noi — vei gasi postul potrivit. Toate sunt disponibile pe platforma noastra, live si gratuit.',
-    relatedSlugs: ['top-10-radiouri-romania-2026', 'radiouri-dimineata-drum-noapte', 'emisiuni-radio-romania-populare'],
+    relatedSlugs: [
+      'top-10-radiouri-romania-2026',
+      'radiouri-dimineata-drum-noapte',
+      'emisiuni-radio-romania-populare',
+    ],
   },
   {
     slug: 'asculta-radio-online-telefon',
@@ -575,7 +583,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: 'Concerte si evenimente live',
         paragraphs: [
-          'Rock FM si Radio Guerrilla transmit frecvent concerte live sau inregistrari din festivaluri (Artmania, Rockstadt Extreme Fest, B\'estfest). Fii atent la programarea speciala de weekend.',
+          "Rock FM si Radio Guerrilla transmit frecvent concerte live sau inregistrari din festivaluri (Artmania, Rockstadt Extreme Fest, B'estfest). Fii atent la programarea speciala de weekend.",
         ],
       },
     ],
@@ -702,6 +710,245 @@ export const BLOG_POSTS: BlogPost[] = [
     conclusion:
       'Romania are in 2026 o oferta radio diversa, cu retele nationale puternice si posturi regionale de traditie. Platforma noastra iti ofera acces la toate — national si local, din orice oras. Exploreaza hub-urile pe orase din meniu pentru a descoperi ce este disponibil in zona ta.',
     relatedSlugs: ['top-10-radiouri-romania-2026', 'emisiuni-radio-romania-populare'],
+  },
+  {
+    slug: 'cele-mai-ascultate-melodii-radio-romania',
+    title: 'Cele Mai Ascultate Melodii si Artisti la Radio in Romania',
+    description:
+      'Ce melodii si artisti domina radioul din Romania in 2026 — de la INNA, Smiley si Carla’s Dreams la Dua Lipa si The Weeknd. Cum functioneaza Airplay 100 si Media Forest.',
+    publishedAt: '2026-06-26',
+    updatedAt: '2026-06-26',
+    author: 'Echipa radiovibe',
+    readingMinutes: 7,
+    tags: ['melodii', 'airplay', 'top'],
+    intro:
+      'La radio in Romania domina un mix consistent de pop romanesc si international, cu artisti precum INNA, Smiley, Carla’s Dreams, The Motans, Delia si Antonia alaturi de nume globale ca Dua Lipa, The Weeknd, Coldplay si Ed Sheeran. Aceste piese se afla constant printre cele mai difuzate, conform clasamentului oficial Airplay 100, monitorizat de Media Forest. In articolul de fata explicam ce melodii se asculta la radio in Romania si de ce ajung ele in rotatie.',
+    sections: [
+      {
+        heading: 'Ce este Airplay 100 si cum ajunge o piesa la radio',
+        paragraphs: [
+          'Airplay 100 este clasamentul oficial al difuzarilor radio din Romania, construit pe baza monitorizarii efectuate de Media Forest. Practic, un sistem urmareste automat ce piese sunt difuzate de zeci de posturi nationale si cat de des, iar din aceste date rezulta un top saptamanal al celor mai cantate melodii.',
+          'Spre deosebire de un top de vanzari sau de streaming, Airplay 100 reflecta strict prezenta la radio. O piesa urca atunci cand este preluata de cat mai multe posturi si rotita frecvent in playlist, nu neaparat cand este cea mai populara pe platformele on-demand.',
+          'Din acest motiv, clasamentul ofera o imagine fidela a ceea ce auzi efectiv cand deschizi radioul — fie ca asculti la FM, fie online.',
+        ],
+      },
+      {
+        heading: 'Artistii romani care domina airplay-ul',
+        paragraphs: [
+          'Pe scena romaneasca, cateva nume revin constant printre cele mai difuzate. INNA ramane una dintre cele mai prezente artiste la radio, cu un format dance-pop care se preteaza perfect rotatiei. Smiley, Delia si Antonia sunt de ani buni piloni ai playlist-urilor pop, cu hituri care prind imediat la public.',
+          'Carla’s Dreams si The Motans aduc o sonoritate mai melancolica si versuri puternice, dar la fel de radio-friendly. Andra, Alexandra Stan, Minelli si Irina Rimes completeaza acest nucleu de artisti romani pe care ii auzi frecvent indiferent de postul ales.',
+          'Ce au in comun? Productii curate, refrene memorabile si o estetica pop adaptata exact la ce cauta posturile comerciale.',
+        ],
+      },
+      {
+        heading: 'Hiturile internationale prezente pe radioul romanesc',
+        paragraphs: [
+          'Radioul din Romania ramane puternic conectat la scena pop internationala. Printre cele mai difuzate nume globale se afla Dua Lipa, The Weeknd, Coldplay, Ed Sheeran, Harry Styles, Taylor Swift si Imagine Dragons — artisti care apar in playlist-uri aproape pe orice post pop sau pop-dance.',
+          'Posturi precum Kiss FM, Pro FM sau Virgin Radio Romania construiesc o buna parte din rotatie in jurul acestor productii internationale, completate de lansari noi pe care le testeaza rapid in eter.',
+          'Aceasta deschidere catre hiturile globale face ca ascultatorul roman sa auda la radio practic aceleasi piese care domina si topurile internationale.',
+        ],
+      },
+      {
+        heading: 'Manelele si muzica populara — un airplay aparte',
+        paragraphs: [
+          'In afara segmentului pop-dance, manelele si muzica populara au propriul ecosistem de difuzare. Posturi specializate, precum National FM, transmit non-stop cele mai ascultate piese din aceste genuri, iar cererea publicului ramane uriasa.',
+          'Aceste melodii nu domina neaparat clasamentul Airplay 100 general, fiindca circula mai mult pe posturi dedicate si pe platforme video, insa la nivel de audienta reala sunt printre cele mai consumate productii muzicale din Romania.',
+        ],
+      },
+      {
+        heading: 'Crossover-urile dance si electronica',
+        paragraphs: [
+          'Un fenomen constant la radioul romanesc este crossover-ul dintre dance, electronica si pop. Multe dintre cele mai difuzate piese sunt, de fapt, colaborari intre vocalisti pop si producatori de muzica electronica, gandite din start pentru club si pentru rotatie radio.',
+          'Artisti ca INNA, Alexandra Stan sau Minelli au construit cariere intregi pe acest format, iar productiile lor functioneaza la fel de bine in playlist-ul de zi al unui post comercial ca si in mixurile de weekend.',
+          'Acest tip de sound, energic si usor de recunoscut, explica de ce dance-pop-ul ramane coloana vertebrala a multor posturi din Romania.',
+        ],
+      },
+      {
+        heading: 'Cum sunt alese piesele din playlist',
+        paragraphs: [
+          'Playlist-urile radio nu se construiesc la intamplare. Editorii muzicali aleg piesele in functie de profilul postului, de feedbackul publicului si de performanta in topuri precum Airplay 100. O melodie noua intra de obicei intr-o rotatie redusa si, daca prinde, urca treptat catre rotatia grea.',
+          'Conceptul de rotatie este esential: cele mai difuzate piese revin la cateva ore, tocmai pentru a se fixa in mintea ascultatorului. De aceea ai senzatia ca anumite hituri sunt peste tot intr-o anumita perioada.',
+          'Monitorizarea Media Forest ofera posturilor si caselor de discuri o radiografie clara a acestui proces si influenteaza deciziile de promovare a pieselor.',
+        ],
+      },
+      {
+        heading: 'De ce se schimba topul, dar nucleul ramane',
+        paragraphs: [
+          'Clasamentul de airplay se schimba de la o saptamana la alta, pe masura ce apar lansari noi si altele ies din rotatie. Cu toate acestea, exista un nucleu de artisti care raman an de an printre cele mai difuzate nume, fiindca au un public fidel si un sound compatibil cu radioul comercial.',
+          'Asa se face ca, dincolo de hitul momentului, vei auzi mereu artisti precum INNA, Smiley, The Weeknd sau Dua Lipa — repere stabile ale peisajului radiofonic romanesc.',
+        ],
+      },
+      {
+        heading: 'Cum asculti aceste melodii pe platforma',
+        paragraphs: [
+          'Cel mai simplu mod de a auzi piesele care domina radioul este sa asculti direct posturile care le difuzeaza. Pe platforma noastra gasesti principalele posturi pop, pop-dance si specializate din Romania, fiecare cu propriul playlist actualizat permanent.',
+          'Deschizi postul dorit, apesi play si asculti live exact ce se difuzeaza in acel moment in eter — inclusiv hiturile aflate in rotatia grea. Poti compara usor mai multe posturi pentru a gasi cel care reda cel mai des artistii tai preferati.',
+        ],
+      },
+    ],
+    conclusion:
+      'Cele mai ascultate melodii la radio in Romania raman un echilibru intre pop-ul romanesc semnat de INNA, Smiley, Carla’s Dreams sau Delia si hiturile internationale ale unor Dua Lipa, The Weeknd ori Coldplay, totul reflectat in clasamentul Airplay 100 monitorizat de Media Forest. Toate posturile care difuzeaza aceste piese sunt disponibile pe platforma noastra, live si gratuit, pe orice dispozitiv.',
+    relatedSlugs: [
+      'top-10-radiouri-romania-2026',
+      'radiouri-pop-romania',
+      'radio-manele-online-romania',
+    ],
+  },
+  {
+    slug: 'radio-dance-electronica-online',
+    title: 'Radio Dance si Electronica Online in Romania: Ghid Complet',
+    description:
+      'Ghid complet al posturilor de radio dance si electronica din Romania. Kiss FM, Dance FM, Deep House Radio, DJ Radio si alte statii cu house, techno si EDM, toate live online.',
+    publishedAt: '2026-06-26',
+    updatedAt: '2026-06-26',
+    author: 'Echipa radiovibe',
+    readingMinutes: 7,
+    tags: ['dance', 'electronica', 'ghid'],
+    intro:
+      'In Romania poti asculta radio dance si electronica online prin posturi precum Kiss FM, Pro FM, Radio ZU si Virgin Radio pentru pop-dance mainstream, Dance FM pentru dance dedicat, Deep House Radio si Radio Boom House Music pentru house, plus DJ Radio Romania si Club Radio pentru seturi de club. Toate transmit live si gratuit, acoperind un spectru larg de la EDM comercial pana la deep house si techno underground.',
+    sections: [
+      {
+        heading: 'Ce defineste un radio dance si electronica',
+        paragraphs: [
+          'Radioul dance si electronica se distinge prin muzica construita pe ritmuri programate, sintetizatoare si productie de studio, nu pe instrumente live. Genul acopera o paleta larga: house, deep house, techno, EDM, trance si muzica de club, fiecare cu tempo si atmosfera proprie.',
+          'Spre deosebire de un post generalist, statiile orientate pe dance pun accent pe energie continua si pe tranzitii fluide intre piese, adesea sub forma de mixuri DJ. Acest format mentine un puls constant, ideal pentru momentele in care vrei un fundal ritmat fara pauze lungi de vorbire.',
+        ],
+      },
+      {
+        heading: 'Pop-dance mainstream: Kiss FM, Pro FM, Radio ZU si Virgin',
+        paragraphs: [
+          'Pentru cei care vor hituri dance accesibile, marile retele comerciale sunt punctul de plecare. Kiss FM, pe 96.1 FM in Bucuresti, este reperul pop-dance al Romaniei, cu playlist orientat pe topuri internationale si mixuri DJ in weekend. Pro FM, pe 102.8 FM, urmeaza aceeasi directie energica, alternand pop international cu artisti romani.',
+          'Radio ZU, pe 89.0 FM, completeaza segmentul cu un mix pop-dance dinamic si emisiuni matinale cunoscute, iar Virgin Radio Romania, pe 99.9 FM, aduce o selectie pop internationala cu inflexiuni dance. Aceste patru posturi sunt cele mai potrivite daca preferi piese recognoscibile, nu electronica de nisa.',
+        ],
+      },
+      {
+        heading: 'Statii dedicate exclusiv genului dance',
+        paragraphs: [
+          'Cand vrei dance non-stop, fara compromisuri de format, posturile specializate sunt alegerea naturala. Dance FM, pe 89.5 FM in Bucuresti, este postul dedicat dance din Romania, cu un flux continuu de hituri de ringul de dans si productii electronice actuale.',
+          'Magic Party Mix merge pe aceeasi linie festiva, cu o selectie party si dance gandita pentru atmosfera de petrecere. Aceste statii renunta la diversitatea generalista in favoarea unei singure directii clare, ceea ce le face usor de pus pe fundal pentru ore intregi.',
+        ],
+      },
+      {
+        heading: 'House si deep house: pentru sunetul cald al cluburilor',
+        paragraphs: [
+          'House-ul este coloana vertebrala a culturii de club, iar in Romania ai posturi care i se dedica integral. Deep House Radio se concentreaza pe deep house, sub-genul mai cald si mai atmosferic, cu linii de bas rotunde si voci filtrate, potrivit pentru ascultare relaxata sau seri tarzii.',
+          'Radio Boom House Music acopera house-ul in forma sa mai larga, de la nuante clasice pana la productii moderne de dancefloor. Daca iti place groove-ul constant de patru pe masura, fara excesele EDM-ului comercial, aceste doua statii ofera exact acel echilibru.',
+        ],
+      },
+      {
+        heading: 'Formate DJ si club: seturi mixate non-stop',
+        paragraphs: [
+          'Pentru experienta cea mai apropiata de un club real, formatele bazate pe seturi DJ fac diferenta. DJ Radio Romania difuzeaza mixuri continue, in care piesele se leaga una de alta asa cum ar face-o un DJ live, eliminand pauzele dintre melodii.',
+          'Club Radio pune accent pe muzica de club in toata diversitatea ei, de la house si EDM pana la accente de techno. Acestor formate li se adauga posturi precum One FM, ProB Radio, Radio Hot Style si Napoca FM din Cluj-Napoca, care presara dance si electronica intr-o programare mai variata, utile cand vrei ritm fara sa stai exclusiv pe un singur sub-gen.',
+        ],
+      },
+      {
+        heading: 'Cand sa asculti: workout, petrecere sau concentrare',
+        paragraphs: [
+          'Alegerea postului tine mult de context. La sala sau in timpul alergarii, tempo-ul ridicat al EDM-ului si al dance-ului mainstream de pe Kiss FM, Dance FM sau Magic Party Mix sustine ritmul efortului si mentine motivatia.',
+          'Pentru o petrecere acasa, formatele DJ de pe DJ Radio Romania si Club Radio creeaza o atmosfera continua, fara momente moarte. In schimb, daca lucrezi sau vrei un fundal discret, deep house-ul de pe Deep House Radio ofera energie ritmata, dar suficient de uniforma incat sa nu distraga atentia.',
+        ],
+      },
+      {
+        heading: 'Cum asculti gratuit online',
+        paragraphs: [
+          'Toate aceste posturi pot fi ascultate direct din browser, fara aplicatii suplimentare si fara cost. E suficient sa deschizi pagina statiei pe radiovibe si sa apesi play; streamul porneste in cateva secunde, indiferent daca esti pe laptop sau pe telefon.',
+          'Avantajul fata de radioul FM clasic este ca nu depinzi de acoperirea unei frecvente locale. Poti asculta Dance FM sau Napoca FM de oriunde din tara sau din strainatate, atata timp cat ai conexiune la internet.',
+        ],
+      },
+    ],
+    conclusion:
+      'De la pop-dance comercial pana la deep house si seturi de club, scena radio dance si electronica din Romania ofera o varietate care acopera orice moment al zilei. Toate posturile mentionate aici, de la Kiss FM si Dance FM la Deep House Radio si DJ Radio Romania, sunt disponibile live si gratuit pe platforma, gata sa fie ascultate cu un singur click.',
+    relatedSlugs: [
+      'top-10-radiouri-romania-2026',
+      'radiouri-pop-romania',
+      'asculta-radio-online-telefon',
+    ],
+  },
+  {
+    slug: 'radio-stiri-online-romania',
+    title: 'Radio Stiri Online in Romania: Ghidul Posturilor de Informatii',
+    description:
+      'Ghid complet al posturilor de radio cu stiri din Romania. Digi FM, Radio Romania Actualitati, Realitatea FM, RFI Romania si alte statii de informatii, toate live online si gratuit.',
+    publishedAt: '2026-06-26',
+    updatedAt: '2026-06-26',
+    author: 'Echipa radiovibe',
+    readingMinutes: 7,
+    tags: ['stiri', 'informatii', 'ghid'],
+    intro:
+      'Cele mai importante posturi de radio cu stiri din Romania sunt Digi FM, Radio Romania Actualitati, Realitatea FM, Digi24 FM si RFI Romania, completate de statiile publice regionale Radio Cluj si Radio Timisoara. Acestea ofera buletine informative la fiecare ora sau la fiecare sfert de ora, analize, dezbateri si stiri locale, fiind alegerea ascultatorilor care vor sa ramana conectati la actualitate pe tot parcursul zilei.',
+    sections: [
+      {
+        heading: 'Radio cu stiri vs radio de muzica',
+        paragraphs: [
+          'Diferenta fundamentala dintre un post de stiri si unul muzical este structura programului. In timp ce posturile pop sau dance ofera playlisturi continue intrerupte ocazional de un buletin scurt, radiourile de informatii pun textul vorbit in centru: buletine, reportaje, interviuri, analize si dezbateri ocupa cea mai mare parte a grilei.',
+          'Acest format, cunoscut international ca news/talk, atrage un public matur care valorizeaza informatia completa si contextul. Muzica, atunci cand exista, joaca un rol secundar, de legatura intre rubricile vorbite.',
+        ],
+      },
+      {
+        heading: 'Liderii informatiei: Digi FM si Radio Romania Actualitati',
+        paragraphs: [
+          'Digi FM, parte din grupul Digi, emite pe 97.1 FM in Bucuresti si propune un format echilibrat: stiri la fiecare sfert de ora, cu muzica pop light intre buletine. Este alegerea celor care vor sa fie mereu la curent fara a renunta complet la o sonoritate placuta de fundal.',
+          'Radio Romania Actualitati, pe 105.1 FM, este postul public national cu cea mai mare credibilitate informativa. Ofera stiri la fiecare ora, analize, emisiuni culturale si dezbateri, fiind un reper pentru jurnalismul de serviciu public din Romania. Cele doua posturi reprezinta cele mai populare optiuni pentru ascultatorii de stiri.',
+        ],
+      },
+      {
+        heading: 'Stiri comerciale: Realitatea FM si Digi24 FM',
+        paragraphs: [
+          'Realitatea FM, pe 95.6 FM, mizeaza pe combinatia de stiri si dezbateri, cu un ton dinamic si emisiuni dedicate temelor de actualitate. Postul atrage ascultatori interesati de comentariul politic si de discutiile in direct pe subiectele zilei.',
+          'Digi24 FM aduce in radio fluxul informativ al grupului Digi, asociat brandului de stiri cunoscut din televiziune. Pentru cei obisnuiti cu acoperirea Digi24, varianta radio ofera aceeasi linie editoriala intr-un format audio, ideal pentru momentele cand ecranul nu este la indemana.',
+        ],
+      },
+      {
+        heading: 'Perspectiva internationala: RFI Romania',
+        paragraphs: [
+          'RFI Romania, pe 93.5 FM, este postul franco-roman care imbina stirile internationale cu cele interne. Provenind din reteaua Radio France Internationale, RFI aduce o perspectiva externa asupra evenimentelor si o acoperire solida a actualitatii din Franta, Europa si restul lumii.',
+          'Pentru ascultatorii care vor sa inteleaga contextul global al stirilor romanesti, RFI Romania este o sursa pretioasa, completand informatia locala cu analize si corespondente din strainatate.',
+        ],
+      },
+      {
+        heading: 'Statii publice regionale: Radio Cluj si Radio Timisoara',
+        paragraphs: [
+          'Radio Cluj, pe 95.6 FM in Cluj-Napoca, este postul public regional care acopera actualitatea din Transilvania. Stirile locale, evenimentele din comunitate si temele specifice zonei fac din el o sursa importanta pentru ascultatorii ardeleni.',
+          'Radio Timisoara, pe 105.9 FM, indeplineste acelasi rol pentru Banat, oferind stiri locale si emisiuni adaptate publicului din vestul tarii. Aceste statii regionale completeaza posturile nationale cu informatie de proximitate, relevanta pentru viata de zi cu zi.',
+        ],
+      },
+      {
+        heading: 'Stiri agricole si rural: Radio Antena Satelor',
+        paragraphs: [
+          'Radio Antena Satelor, pe 89.0 FM, este postul public dedicat mediului rural. Pe langa muzica populara si traditionala, ofera stiri agricole, informatii utile pentru fermieri si rubrici despre viata la sat.',
+          'Este un exemplu de radio cu o misiune informativa de nisa, care raspunde nevoilor unei comunitati specifice, deseori neglijate de posturile generaliste din marile orase.',
+        ],
+      },
+      {
+        heading: 'Stiri la sfert de ora vs buletine la ora',
+        paragraphs: [
+          'Cele doua formate principale de difuzare a stirilor sunt buletinul orar si buletinul la sfert de ora. Radio Romania Actualitati foloseste ritmul clasic, cu un buletin complet la fiecare ora, urmat de analize si emisiuni tematice mai lungi.',
+          'Digi FM a popularizat in schimb formatul stirilor la fiecare sfert de ora, care ofera actualizari frecvente si scurte. Acest ritm rapid este ideal pentru ascultatorul aflat in trafic sau pentru cei care vor titlurile importante fara sa astepte ora fixa.',
+        ],
+      },
+      {
+        heading: 'De ce asculta romanii radio cu stiri',
+        paragraphs: [
+          'Motivele sunt practice si tin de stilul de viata. Naveta de dimineata si de seara este momentul ideal pentru buletine: in masina sau in transportul public, radioul ofera actualitatea hands-free, fara a distrage atentia de la drum.',
+          'In acelasi timp, radioul de stiri functioneaza excelent ca fundal informativ la birou sau acasa, lasand ascultatorul sa lucreze in timp ce ramane conectat. Nu in ultimul rand, credibilitatea conteaza: posturile publice si retelele consacrate ofera o sursa verificata, apreciata de un public care cauta informatie de incredere.',
+        ],
+      },
+      {
+        heading: 'Cum asculti gratuit online',
+        paragraphs: [
+          'Toate aceste posturi de stiri pot fi ascultate live, direct in browser, fara aplicatii suplimentare si fara cont. Pe platforma noastra gasesti streaming de calitate pentru Digi FM, Radio Romania Actualitati, Realitatea FM, Digi24 FM, RFI Romania, Radio Cluj, Radio Timisoara si Radio Antena Satelor.',
+          'Indiferent ca vrei stirile nationale, perspectiva internationala sau informatia locala din Transilvania ori Banat, le ai pe toate intr-un singur loc, accesibile de pe telefon, laptop sau tableta.',
+        ],
+      },
+    ],
+    conclusion:
+      'Radioul de stiri ramane in 2026 o sursa esentiala de informatie pentru romani, de la liderii nationali Digi FM si Radio Romania Actualitati pana la posturile regionale precum Radio Cluj si Radio Timisoara. Fiecare format raspunde unei nevoi: stiri rapide la sfert de ora, analize la ora fixa, perspectiva internationala sau informatie de proximitate. Toate posturile mentionate sunt disponibile pe platforma noastra, live si gratuit, pe orice dispozitiv.',
+    relatedSlugs: [
+      'top-10-radiouri-romania-2026',
+      'emisiuni-radio-romania-populare',
+      'radio-orase-romania-locala',
+    ],
   },
 ];
 

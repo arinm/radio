@@ -81,9 +81,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: SITE_URL,
-  },
+  // NOTE: no `alternates.canonical` here on purpose. A canonical in the root
+  // layout is inherited by every child route that doesn't set its own, which
+  // risks silently canonicalising new pages to the homepage. Each page sets its
+  // own canonical; the homepage sets it in app/page.tsx.
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
@@ -113,7 +114,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang={DEFAULT_LANGUAGE.split('-')[0]} className={inter.variable} suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+      <body className="bg-background text-foreground min-h-screen font-sans antialiased">
         <ThemeProvider>
           <PlayerProvider>
             <div className="flex min-h-screen flex-col">

@@ -1,5 +1,19 @@
-import { SITE_NAME, BRAND_NAME, SITE_URL, SITE_DESCRIPTION, GENRES } from './constants';
+import {
+  SITE_NAME,
+  BRAND_NAME,
+  SITE_URL,
+  SITE_DESCRIPTION,
+  GENRES,
+  ORG_LEGAL_NAME,
+  ORG_LOGO_URL,
+  ORG_SAME_AS,
+} from './constants';
 import type { Station, Genre, FAQItem } from '@/types';
+
+// Stable @id for the brand Organization entity, referenced across pages so
+// search engines and AI crawlers resolve every mention to one entity.
+const ORG_ID = `${SITE_URL}/#organization`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
 
 /**
  * SEO utilities — generates metadata, JSON-LD structured data,
@@ -50,16 +64,51 @@ export function genreCanonical(slug: string): string {
   return `${SITE_URL}/radio-genuri/${slug}`;
 }
 
+/**
+ * Build a self-referencing canonical for a paginated list page.
+ * Page 1 (or no page) → the base URL; page N>1 → base?page=N.
+ * Prevents deep pages from being canonicalised back to page 1, which would
+ * leave their stations under-discovered.
+ */
+export function paginatedCanonical(baseUrl: string, page: number): string {
+  return page > 1 ? `${baseUrl}?page=${page}` : baseUrl;
+}
+
 // JSON-LD Structured Data
 
 /**
+ * Organization JSON-LD describing the brand entity itself.
+ * This is the single highest-value brand/Knowledge-Panel signal and the
+ * `@id` other nodes (WebSite.publisher, station broadcaster) point back to.
+ */
+export function organizationJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': ORG_ID,
+    name: BRAND_NAME,
+    legalName: ORG_LEGAL_NAME,
+    url: SITE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: ORG_LOGO_URL,
+    },
+    description: SITE_DESCRIPTION,
+    ...(ORG_SAME_AS.length > 0 && { sameAs: ORG_SAME_AS }),
+  };
+}
+
+/**
  * RadioStation JSON-LD for a station page.
- * Uses schema.org/RadioStation with BroadcastService.
+ * RadioStation has no rich result in Search, but the entity + `ListenAction`
+ * help Google and AI assistants understand the page is a live-audio entry
+ * point ("where can I listen to X online?").
  */
 export function stationJsonLd(station: Station) {
   return {
     '@context': 'https://schema.org',
     '@type': 'RadioStation',
+    '@id': `${stationCanonical(station.slug)}#station`,
     name: station.name,
     url: stationCanonical(station.slug),
     description: station.description || `Asculta ${station.name} live online`,
@@ -86,6 +135,24 @@ export function stationJsonLd(station: Station) {
       '@type': 'Organization',
       name: station.name,
     },
+    // Signals the page lets users listen live, without exposing the raw
+    // (sanitised) stream URL — the canonical page is the listen entry point.
+    potentialAction: {
+      '@type': 'ListenAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: stationCanonical(station.slug),
+        actionPlatform: [
+          'https://schema.org/DesktopWebPlatform',
+          'https://schema.org/MobileWebPlatform',
+        ],
+      },
+      expectsAcceptanceOf: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'RON',
+      },
+    },
     inLanguage: station.language === 'ro' ? 'ro-RO' : station.language,
   };
 }
@@ -97,10 +164,12 @@ export function websiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': WEBSITE_ID,
     name: SITE_NAME,
     url: SITE_URL,
     description: SITE_DESCRIPTION,
     inLanguage: 'ro-RO',
+    publisher: { '@id': ORG_ID },
     potentialAction: {
       '@type': 'SearchAction',
       target: {
@@ -204,27 +273,33 @@ export function generateHomeFAQs(stationCount: number): FAQItem[] {
     },
     {
       question: 'Este gratuit sa ascult radio online?',
-      answer: 'Da, toate posturile de radio sunt 100% gratuite. Nu este necesara crearea unui cont sau instalarea unei aplicatii. Trebuie doar sa apesi butonul de play.',
+      answer:
+        'Da, toate posturile de radio sunt 100% gratuite. Nu este necesara crearea unui cont sau instalarea unei aplicatii. Trebuie doar sa apesi butonul de play.',
     },
     {
       question: 'Pot asculta radio online pe telefon?',
-      answer: 'Da, platforma noastra functioneaza pe orice dispozitiv cu browser web — telefon, tableta sau calculator. Nu ai nevoie de o aplicatie separata.',
+      answer:
+        'Da, platforma noastra functioneaza pe orice dispozitiv cu browser web — telefon, tableta sau calculator. Nu ai nevoie de o aplicatie separata.',
     },
     {
       question: 'Ce genuri de radio sunt disponibile?',
-      answer: 'Avem posturi de radio din toate genurile: pop, rock, manele, muzica populara, dance, hip-hop, jazz, muzica clasica, stiri, sport si multe altele.',
+      answer:
+        'Avem posturi de radio din toate genurile: pop, rock, manele, muzica populara, dance, hip-hop, jazz, muzica clasica, stiri, sport si multe altele.',
     },
     {
       question: 'Cum caut un post de radio anume?',
-      answer: 'Foloseste bara de cautare din partea de sus a paginii. Poti cauta dupa numele postului, oras sau gen muzical.',
+      answer:
+        'Foloseste bara de cautare din partea de sus a paginii. Poti cauta dupa numele postului, oras sau gen muzical.',
     },
     {
       question: 'Pot salva posturile de radio favorite?',
-      answer: 'Da, apasa iconita de inima de pe orice post de radio pentru a-l adauga la favorite. Lista ta de favorite este salvata local in browser.',
+      answer:
+        'Da, apasa iconita de inima de pe orice post de radio pentru a-l adauga la favorite. Lista ta de favorite este salvata local in browser.',
     },
     {
       question: 'Platforma adauga reclame la streamurile radio?',
-      answer: 'Nu, platforma noastra nu adauga reclame proprii. Streamurile audio sunt cele originale ale fiecarui post de radio, asa cum sunt transmise de catre acestea.',
+      answer:
+        'Nu, platforma noastra nu adauga reclame proprii. Streamurile audio sunt cele originale ale fiecarui post de radio, asa cum sunt transmise de catre acestea.',
     },
   ];
 }
@@ -248,9 +323,7 @@ export function generateStationFAQs(station: Station): FAQItem[] {
   }
 
   if (station.genres.length > 0) {
-    const genreNames = station.genres
-      .map((g) => GENRES[g]?.nameRo || g)
-      .join(', ');
+    const genreNames = station.genres.map((g) => GENRES[g]?.nameRo || g).join(', ');
     faqs.push({
       question: `Ce gen de muzica are ${station.name}?`,
       answer: `${station.name} transmite muzica din genurile: ${genreNames}. Poti descoperi si alte posturi similare in sectiunea de posturi similare de pe aceasta pagina.`,

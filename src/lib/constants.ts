@@ -7,6 +7,18 @@ export const SITE_DESCRIPTION =
 export const DEFAULT_LOCALE = 'ro';
 export const DEFAULT_LANGUAGE = 'ro-RO';
 
+// Brand entity (used for Organization JSON-LD / brand SEO + Knowledge Panel)
+export const ORG_LEGAL_NAME = 'radiovibe';
+export const ORG_LOGO_URL = `${SITE_URL}/icons/icon-512x512.png`;
+// Public social/brand profiles for schema.org `sameAs`. Add real URLs as they
+// go live (Facebook, Instagram, YouTube, Wikidata, etc.). Empty = omitted.
+export const ORG_SAME_AS: string[] = [];
+
+// Date the directory content was last meaningfully revised. Used as a stable
+// `lastmod` for static/config-driven pages so we never stamp "today" on every
+// crawl — Google discounts lastmod that always equals the request date.
+export const CONTENT_LAST_UPDATED = '2026-06-01T00:00:00.000Z';
+
 // Pagination
 export const DEFAULT_PAGE_SIZE = 24;
 export const MAX_PAGE_SIZE = 100;

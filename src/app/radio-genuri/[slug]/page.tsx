@@ -9,6 +9,7 @@ import {
   genreTitle,
   genreDescription,
   genreCanonical,
+  paginatedCanonical,
   breadcrumbJsonLd,
   stationListJsonLd,
   openGraphMeta,
@@ -29,8 +30,13 @@ export async function generateStaticParams() {
   return genres.map((genre) => ({ slug: genre.slug }));
 }
 
-export async function generateMetadata({ params }: GenrePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: GenrePageProps): Promise<Metadata> {
   const { slug } = await params;
+  const { page: pageStr } = await searchParams;
+  const page = Math.max(1, parseInt(pageStr || '1', 10) || 1);
   const genreInfo = GENRES[slug];
   if (!genreInfo) return { title: 'Gen negasit' };
 
@@ -42,9 +48,12 @@ export async function generateMetadata({ params }: GenrePageProps): Promise<Meta
     stationCount: 0,
   };
 
-  const title = genreTitle(genre);
+  const baseTitle = genreTitle(genre);
+  const title = page > 1 ? `${baseTitle} - Pagina ${page}` : baseTitle;
   const description = genreDescription(genre);
-  const canonical = genreCanonical(slug);
+  // Self-referencing canonical that includes ?page=N for N>1, so deep pages
+  // aren't canonicalised back to page 1 (which would hide their stations).
+  const canonical = paginatedCanonical(genreCanonical(slug), page);
 
   return {
     title,
@@ -102,25 +111,33 @@ export default async function GenrePage({ params, searchParams }: GenrePageProps
       <div className="mx-auto max-w-7xl px-4 py-12">
         {/* Breadcrumb */}
         <nav className="mb-6" aria-label="Breadcrumb">
-          <ol className="flex items-center gap-1.5 text-sm text-muted-foreground">
-            <li><Link href="/" className="hover:text-foreground">Acasa</Link></li>
+          <ol className="text-muted-foreground flex items-center gap-1.5 text-sm">
+            <li>
+              <Link href="/" className="hover:text-foreground">
+                Acasa
+              </Link>
+            </li>
             <li aria-hidden="true">/</li>
-            <li><Link href="/radio-genuri" className="hover:text-foreground">Genuri</Link></li>
+            <li>
+              <Link href="/radio-genuri" className="hover:text-foreground">
+                Genuri
+              </Link>
+            </li>
             <li aria-hidden="true">/</li>
-            <li className="font-medium text-foreground">{genre.nameRo}</li>
+            <li className="text-foreground font-medium">{genre.nameRo}</li>
           </ol>
         </nav>
 
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
+        <h1 className="text-foreground text-3xl font-bold sm:text-4xl">
           Radio {genre.nameRo} Online
         </h1>
-        <p className="mt-2 text-lg text-muted-foreground">
+        <p className="text-muted-foreground mt-2 text-lg">
           {genre.description} ({genre.stationCount} posturi)
         </p>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          Asculta cele mai bune posturi de radio {genre.nameRo.toLowerCase()} din Romania,
-          live si gratuit. Alege din {genre.stationCount} posturi disponibile si apasa play
-          pentru a incepe sa asculti direct din browser, fara aplicatii sau inregistrare.
+        <p className="text-muted-foreground mt-3 max-w-3xl text-sm leading-relaxed">
+          Asculta cele mai bune posturi de radio {genre.nameRo.toLowerCase()} din Romania, live si
+          gratuit. Alege din {genre.stationCount} posturi disponibile si apasa play pentru a incepe
+          sa asculti direct din browser, fara aplicatii sau inregistrare.
         </p>
 
         <div className="mt-8">
@@ -141,7 +158,7 @@ export default async function GenrePage({ params, searchParams }: GenrePageProps
         )}
 
         {/* FAQ Section */}
-        <div className="mt-12 border-t border-border pt-12">
+        <div className="border-border mt-12 border-t pt-12">
           <FAQSection
             faqs={genreFaqs}
             title={`Intrebari frecvente despre radio ${genre.nameRo.toLowerCase()}`}

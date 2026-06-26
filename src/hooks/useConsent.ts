@@ -65,7 +65,7 @@ export function useConsent() {
     const secure = window.location.protocol === 'https:' ? '; Secure' : '';
     document.cookie = `${CONSENT_COOKIE_NAME}=${value}; Path=/; Max-Age=${CONSENT_COOKIE_MAX_AGE}; SameSite=Lax${secure}`;
 
-    // Dispatch event for other components (e.g., GoogleAnalytics)
+    // Dispatch event for other components (e.g., AnalyticsWrapper)
     window.dispatchEvent(new CustomEvent('consent-updated', { detail: updated }));
   }, []);
 

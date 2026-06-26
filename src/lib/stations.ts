@@ -128,32 +128,34 @@ export async function searchStations(
   const offset = (page - 1) * pageSize;
 
   // Use raw query for PostgreSQL case-insensitive search with ILIKE
-  const stations = await prisma.$queryRaw<Array<{
-    id: string;
-    name: string;
-    slug: string;
-    streamUrl: string;
-    streamUrlBackup: string | null;
-    homepage: string | null;
-    description: string | null;
-    genres: string;
-    city: string | null;
-    region: string | null;
-    language: string;
-    logoUrl: string | null;
-    brandColor: string | null;
-    bitrate: number | null;
-    codec: string | null;
-    frequency: string | null;
-    isActive: boolean;
-    isFeatured: boolean;
-    listenScore: number;
-    lastCheckedAt: Date | null;
-    status: string;
-    socialLinks: string | null;
-    createdAt: Date;
-    updatedAt: Date;
-  }>>`
+  const stations = await prisma.$queryRaw<
+    Array<{
+      id: string;
+      name: string;
+      slug: string;
+      streamUrl: string;
+      streamUrlBackup: string | null;
+      homepage: string | null;
+      description: string | null;
+      genres: string;
+      city: string | null;
+      region: string | null;
+      language: string;
+      logoUrl: string | null;
+      brandColor: string | null;
+      bitrate: number | null;
+      codec: string | null;
+      frequency: string | null;
+      isActive: boolean;
+      isFeatured: boolean;
+      listenScore: number;
+      lastCheckedAt: Date | null;
+      status: string;
+      socialLinks: string | null;
+      createdAt: Date;
+      updatedAt: Date;
+    }>
+  >`
     SELECT * FROM "Station"
     WHERE "isActive" = true
     AND (
@@ -190,10 +192,7 @@ export async function searchStations(
 /**
  * Get stations similar to a given station (by genre overlap).
  */
-export async function getSimilarStations(
-  station: Station,
-  limit = 6,
-): Promise<Station[]> {
+export async function getSimilarStations(station: Station, limit = 6): Promise<Station[]> {
   if (station.genres.length === 0) {
     // Fallback: return popular stations
     const records = await prisma.station.findMany({
@@ -263,6 +262,21 @@ export async function getAllStationSlugs(): Promise<string[]> {
       select: { slug: true },
     });
     return records.map((r) => r.slug);
+  });
+}
+
+/**
+ * Station slugs with their real last-modified date, for the sitemap.
+ * Using the actual `updatedAt` keeps `<lastmod>` trustworthy — never stamps
+ * the crawl date on every URL (which Google discounts site-wide).
+ */
+export async function getStationSitemapEntries(): Promise<{ slug: string; updatedAt: Date }[]> {
+  return cached('station-sitemap-entries', CACHE_TTL.SITEMAP, async () => {
+    const records = await prisma.station.findMany({
+      where: { isActive: true },
+      select: { slug: true, updatedAt: true },
+    });
+    return records.map((r) => ({ slug: r.slug, updatedAt: r.updatedAt }));
   });
 }
 
