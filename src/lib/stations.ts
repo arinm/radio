@@ -261,7 +261,7 @@ export async function getAllStationSlugs(): Promise<string[]> {
       where: { isActive: true },
       select: { slug: true },
     });
-    return records.map((r) => r.slug);
+    return records.map((r: { slug: string }) => r.slug);
   });
 }
 
@@ -276,7 +276,10 @@ export async function getStationSitemapEntries(): Promise<{ slug: string; update
       where: { isActive: true },
       select: { slug: true, updatedAt: true },
     });
-    return records.map((r) => ({ slug: r.slug, updatedAt: r.updatedAt }));
+    return records.map((r: { slug: string; updatedAt: Date }) => ({
+      slug: r.slug,
+      updatedAt: r.updatedAt,
+    }));
   });
 }
 

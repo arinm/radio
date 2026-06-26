@@ -3,8 +3,13 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  // Accelerate (prisma+postgres:// over HTTPS) — reachable from Vercel builds
+  // and serverless. Used by the app client at build time and runtime.
+  url       = env("PRISMA_DATABASE_URL")
+  // Direct postgres:// connection (db.prisma.io:5432) — only used by
+  // `prisma migrate` / `prisma db push`, run manually/locally, not on deploy.
+  directUrl = env("DATABASE_URL")
 }
 
 model Station {
