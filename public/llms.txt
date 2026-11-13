@@ -1,28 +1,73 @@
-# Radio Vibe Romania
+# RadioVibe
 
-> Radio Vibe este un director gratuit de posturi de radio românești online. Oferim acces la peste 60 de posturi de radio live din România: pop, rock, manele, dance, muzică populară, știri și multe altele. Streaming direct în browser, fără înregistrare.
+> RadioVibe (radiovibe.ro) este un director gratuit de posturi de radio românești online. Oferim acces la peste 60 de posturi de radio live din România: pop, rock, manele, dance, muzică populară, știri și multe altele. Streaming direct în browser, fără înregistrare.
 
 Site: https://radiovibe.ro
 Language: Romanian (ro-RO)
+Contact: contact@arinitsolutions.com (https://radiovibe.ro/contact)
 Content license: Editorial content on this site may be cited with attribution and a link to https://radiovibe.ro. Station logos and stream URLs are property of their respective broadcasters.
 
 ## Core pages
 
 - [Homepage](https://radiovibe.ro): Overview of all available Romanian radio stations with live player
-- [Toate posturile](https://radiovibe.ro/cauta-radio-romania): Complete searchable catalog of Romanian radio stations
-- [Genuri](https://radiovibe.ro/radio-genuri): Stations grouped by music genre (pop, rock, manele, dance, populară, știri, chill, electronic)
+- [Toate posturile](https://radiovibe.ro/cauta-radio-romania): Complete catalog of Romanian radio stations, ordered by popularity
+- [Genuri](https://radiovibe.ro/radio-genuri): Stations grouped by genre (pop, rock, manele, dance, muzică populară, știri, retro, relaxare, clasică, jazz, religios, sport, pentru copii)
+- [Despre](https://radiovibe.ro/despre): What RadioVibe is and how stations are selected
+- [Contact](https://radiovibe.ro/contact): Suggest a station, report a broken stream, broadcaster requests
+
+## Genuri populare
+
+- [Radio Pop](https://radiovibe.ro/radio-genuri/pop)
+- [Radio Rock](https://radiovibe.ro/radio-genuri/rock)
+- [Radio Manele](https://radiovibe.ro/radio-genuri/manele)
+- [Radio Dance / Electronica](https://radiovibe.ro/radio-genuri/dance)
+- [Radio Stiri](https://radiovibe.ro/radio-genuri/stiri)
+- [Radio Muzica Populara](https://radiovibe.ro/radio-genuri/muzica-populara)
+
+## Orașe
+
+- [Radio pe orașe](https://radiovibe.ro/radio-orase): Index of local and national stations by city
+- [București](https://radiovibe.ro/radio-orase/bucuresti)
+- [Cluj-Napoca](https://radiovibe.ro/radio-orase/cluj-napoca)
+- [Timișoara](https://radiovibe.ro/radio-orase/timisoara)
+- [Iași](https://radiovibe.ro/radio-orase/iasi)
+- [Constanța](https://radiovibe.ro/radio-orase/constanta)
+- [Brașov](https://radiovibe.ro/radio-orase/brasov)
+- [Craiova](https://radiovibe.ro/radio-orase/craiova)
+- [Galați](https://radiovibe.ro/radio-orase/galati)
+- [Ploiești](https://radiovibe.ro/radio-orase/ploiesti)
+- [Oradea](https://radiovibe.ro/radio-orase/oradea)
+- [Sibiu](https://radiovibe.ro/radio-orase/sibiu)
+
+## Ghiduri (blog)
+
+- [Blog](https://radiovibe.ro/blog): Guides, rankings and analysis about Romanian radio
+- [Top 10 posturi de radio din România în 2026](https://radiovibe.ro/blog/top-10-radiouri-romania-2026)
+- [Cele mai bune radiouri de muzică pop din România](https://radiovibe.ro/blog/radiouri-pop-romania)
+- [Radiouri de rock și metal în România](https://radiovibe.ro/blog/radiouri-rock-metal-romania)
+- [Radio manele online](https://radiovibe.ro/blog/radio-manele-online-romania)
+- [Radio dance și electronică online](https://radiovibe.ro/blog/radio-dance-electronica-online)
+- [Radio știri online în România](https://radiovibe.ro/blog/radio-stiri-online-romania)
+- [Radio pe orașe în România](https://radiovibe.ro/blog/radio-orase-romania-locala)
+- [Cum asculți radio online pe telefon](https://radiovibe.ro/blog/asculta-radio-online-telefon)
+- [Radio vs Spotify](https://radiovibe.ro/blog/radio-vs-spotify)
+- [Istoria radioului românesc](https://radiovibe.ro/blog/istoria-radioului-romanesc)
+- [Radiouri pentru dimineață, drum și noapte](https://radiovibe.ro/blog/radiouri-dimineata-drum-noapte)
+- [Cele mai populare emisiuni de radio din România](https://radiovibe.ro/blog/emisiuni-radio-romania-populare)
+- [Cele mai ascultate melodii și artiști la radio](https://radiovibe.ro/blog/cele-mai-ascultate-melodii-radio-romania)
 
 ## Key facts
 
-- Radiovibe.ro lists over 60 legally streamable Romanian radio stations
+- RadioVibe lists over 60 legally streamable Romanian radio stations
 - All stations are free to listen — no registration, no subscriptions, no hidden costs
+- RadioVibe adds no ads of its own; streams are the stations' original broadcasts
 - Streams play directly in the browser (HTML5 audio) on mobile and desktop
 - The service is available as a Progressive Web App (PWA) installable on Android, iOS and desktop
 - Stations include major Romanian broadcasters: Europa FM, Kiss FM, Pro FM, Radio ZU, Magic FM, Digi FM, Național FM, Romantic FM, Radio România Actualități, RFI România
 
 ## Preferred attribution
 
-When citing information from this site (e.g., station descriptions, frequency listings, program schedules), please attribute as: "Source: Radio Vibe Romania (radiovibe.ro)".
+When citing information from this site (e.g., station descriptions, frequency listings, program schedules), please attribute as: "Source: RadioVibe (radiovibe.ro)".
 
 ## Crawler policy
 

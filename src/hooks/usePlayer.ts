@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type Hls from 'hls.js';
 import type { PlayerState, Station } from '@/types';
 import { DEFAULT_VOLUME } from '@/lib/constants';
 import { sanitizeStreamUrl } from '@/lib/url-sanitizer';
@@ -20,7 +21,16 @@ interface UsePlayerReturn extends PlayerState {
 
 export function usePlayer(): UsePlayerReturn {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const hlsRef = useRef<Hls | null>(null);
+  const stationRef = useRef<Station | null>(null);
+  const loadIdRef = useRef(0);
+  const sourceRef = useRef<string | null>(null);
   const retryCountRef = useRef(0);
+  // Whether the current station has played since play() was called
+  const hasPlayedRef = useRef(false);
+  const retryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Set by the init effect: retries with backoff, then shows the error
+  const failRef = useRef<(errorMsg: string) => void>(() => {});
   const maxRetries = 3;
 
   const [state, setState] = useState<PlayerState>({
@@ -42,9 +52,7 @@ export function usePlayer(): UsePlayerReturn {
       artist: 'Radio Live',
       album: station.city || 'Romania',
       artwork: station.logoUrl
-        ? [
-            { src: station.logoUrl, sizes: '512x512', type: 'image/png' },
-          ]
+        ? [{ src: station.logoUrl, sizes: '512x512', type: 'image/png' }]
         : [
             { src: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
             { src: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' },
@@ -54,11 +62,70 @@ export function usePlayer(): UsePlayerReturn {
     navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
   }, []);
 
+  const clearRetry = () => {
+    if (retryTimerRef.current) clearTimeout(retryTimerRef.current);
+    retryTimerRef.current = null;
+  };
+
+  // Points the audio element at a stream; resolves to false if a newer load or a
+  // stop superseded it. HLS (.m3u8) goes through hls.js, loaded on demand;
+  // browsers without MSE (older iOS) fall back to native HLS playback.
+  const loadSource = useCallback(async (url: string): Promise<boolean> => {
+    const audio = audioRef.current;
+    if (!audio) return false;
+    const loadId = ++loadIdRef.current;
+    clearRetry();
+    hlsRef.current?.destroy();
+    hlsRef.current = null;
+    sourceRef.current = url;
+
+    if (/\.m3u8($|\?)/i.test(url)) {
+      // Silence the previous stream while hls.js loads
+      audio.removeAttribute('src');
+      audio.load();
+      const { default: HlsPlayer } = await import('hls.js');
+      if (loadId !== loadIdRef.current) return false;
+      if (HlsPlayer.isSupported()) {
+        const hls = new HlsPlayer();
+        hls.on(HlsPlayer.Events.ERROR, (_event, data) => {
+          if (!data.fatal) return;
+          hls.destroy();
+          if (hlsRef.current === hls) hlsRef.current = null;
+          failRef.current('Streamul nu este disponibil momentan.');
+        });
+        hls.loadSource(url);
+        hls.attachMedia(audio);
+        hlsRef.current = hls;
+        return true;
+      }
+    }
+
+    audio.src = url;
+    audio.load();
+    return true;
+  }, []);
+
+  // Detaches the stream without firing an `error` event (unlike `src = ''`) and
+  // cancels any pending retry.
+  const unloadSource = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    loadIdRef.current++;
+    clearRetry();
+    sourceRef.current = null;
+    hlsRef.current?.destroy();
+    hlsRef.current = null;
+    audio.pause();
+    audio.removeAttribute('src');
+    audio.load();
+  }, []);
+
   // Initialize audio element once
   useEffect(() => {
     const audio = new Audio();
     audio.preload = 'none';
-    audio.crossOrigin = 'anonymous';
+    // No crossOrigin: nothing reads the audio data, and setting it makes every
+    // stream whose server sends no CORS headers fail to load.
     audioRef.current = audio;
 
     // Restore volume from storage
@@ -84,8 +151,7 @@ export function usePlayer(): UsePlayerReturn {
         audio.pause();
       });
       navigator.mediaSession.setActionHandler('stop', () => {
-        audio.pause();
-        audio.src = '';
+        unloadSource();
         setState((s) => ({
           ...s,
           isPlaying: false,
@@ -100,6 +166,7 @@ export function usePlayer(): UsePlayerReturn {
     // Event listeners
     const onPlaying = () => {
       retryCountRef.current = 0;
+      hasPlayedRef.current = true;
       setState((s) => {
         updateMediaSession(s.station, true);
         return { ...s, isPlaying: true, isLoading: false, isBuffering: false, error: null };
@@ -115,6 +182,48 @@ export function usePlayer(): UsePlayerReturn {
         updateMediaSession(s.station, false);
         return { ...s, isPlaying: false, isBuffering: false };
       });
+    };
+
+    // Shared by media element and hls.js errors. Switches to the backup URL (if
+    // any) from the second retry on.
+    failRef.current = (errorMsg: string) => {
+      // Ignore errors from a stream that was already detached
+      const station = stationRef.current;
+      if (!station || !sourceRef.current) return;
+
+      if (retryCountRef.current < maxRetries) {
+        retryCountRef.current++;
+        // Some servers start the stream mid-frame and the first connection fails to
+        // decode; a fresh one usually works, so the first retry before playback is quick.
+        const delay =
+          retryCountRef.current === 1 && !hasPlayedRef.current ? 300 : retryCountRef.current * 2000;
+        retryTimerRef.current = setTimeout(() => {
+          retryTimerRef.current = null;
+          if (stationRef.current !== station) return;
+          const url = sanitizeStreamUrl(
+            retryCountRef.current >= 2 && station.streamUrlBackup
+              ? station.streamUrlBackup
+              : station.streamUrl,
+          );
+          if (!url) return;
+          loadSource(url)
+            .then((loaded) => (loaded ? audio.play() : undefined))
+            .catch(() => {});
+        }, delay);
+        setState((s) => ({
+          ...s,
+          isLoading: true,
+          error: `Se reincearca... (${retryCountRef.current}/${maxRetries})`,
+        }));
+      } else {
+        setState((s) => ({
+          ...s,
+          isPlaying: false,
+          isLoading: false,
+          isBuffering: false,
+          error: errorMsg,
+        }));
+      }
     };
 
     const onError = () => {
@@ -133,31 +242,7 @@ export function usePlayer(): UsePlayerReturn {
           break;
       }
 
-      // Auto-retry with backoff
-      if (retryCountRef.current < maxRetries) {
-        retryCountRef.current++;
-        const delay = retryCountRef.current * 2000;
-        setTimeout(() => {
-          if (audioRef.current && state.station) {
-            // Try backup URL if available on second retry
-            if (retryCountRef.current === 2 && state.station.streamUrlBackup) {
-              const backupUrl = sanitizeStreamUrl(state.station.streamUrlBackup);
-              if (backupUrl) {
-                audioRef.current.src = backupUrl;
-              }
-            }
-            audioRef.current.load();
-            audioRef.current.play().catch(() => {});
-          }
-        }, delay);
-        setState((s) => ({
-          ...s,
-          isLoading: true,
-          error: `Se reincearca... (${retryCountRef.current}/${maxRetries})`,
-        }));
-      } else {
-        setState((s) => ({ ...s, isPlaying: false, isLoading: false, isBuffering: false, error: errorMsg }));
-      }
+      failRef.current(errorMsg);
     };
 
     const onLoadStart = () => {
@@ -176,8 +261,7 @@ export function usePlayer(): UsePlayerReturn {
       audio.removeEventListener('pause', onPause);
       audio.removeEventListener('error', onError);
       audio.removeEventListener('loadstart', onLoadStart);
-      audio.pause();
-      audio.src = '';
+      unloadSource();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -189,7 +273,10 @@ export function usePlayer(): UsePlayerReturn {
       const list: string[] = stored ? JSON.parse(stored) : [];
       const filtered = list.filter((slug) => slug !== station.slug);
       filtered.unshift(station.slug);
-      localStorage.setItem(RECENTLY_PLAYED_KEY, JSON.stringify(filtered.slice(0, MAX_RECENTLY_PLAYED)));
+      localStorage.setItem(
+        RECENTLY_PLAYED_KEY,
+        JSON.stringify(filtered.slice(0, MAX_RECENTLY_PLAYED)),
+      );
     } catch {
       // Ignore storage errors
     }
@@ -207,8 +294,8 @@ export function usePlayer(): UsePlayerReturn {
       }
 
       retryCountRef.current = 0;
-      audio.src = streamUrl;
-      audio.load();
+      hasPlayedRef.current = false;
+      stationRef.current = station;
 
       setState((s) => ({
         ...s,
@@ -220,27 +307,28 @@ export function usePlayer(): UsePlayerReturn {
 
       updateMediaSession(station, false);
 
-      audio.play().catch((err) => {
-        // Handle autoplay policy
-        if (err.name === 'NotAllowedError') {
-          setState((s) => ({
-            ...s,
-            isLoading: false,
-            error: 'Apasati din nou pentru a porni radioul (politica de autoplay a browserului).',
-          }));
-        }
-      });
+      loadSource(streamUrl)
+        .then((loaded) => (loaded ? audio.play() : undefined))
+        .catch((err) => {
+          // Handle autoplay policy
+          if (err.name === 'NotAllowedError') {
+            setState((s) => ({
+              ...s,
+              isLoading: false,
+              error: 'Apasati din nou pentru a porni radioul (politica de autoplay a browserului).',
+            }));
+          }
+        });
 
       addToRecentlyPlayed(station);
     },
-    [addToRecentlyPlayed, updateMediaSession],
+    [addToRecentlyPlayed, updateMediaSession, loadSource],
   );
 
   const stop = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.pause();
-    audio.src = '';
+    unloadSource();
     setState((s) => ({
       ...s,
       isPlaying: false,
@@ -251,7 +339,7 @@ export function usePlayer(): UsePlayerReturn {
     if ('mediaSession' in navigator) {
       navigator.mediaSession.playbackState = 'none';
     }
-  }, []);
+  }, [unloadSource]);
 
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
@@ -259,17 +347,18 @@ export function usePlayer(): UsePlayerReturn {
 
     if (state.isPlaying) {
       audio.pause();
-    } else {
-      if (!audio.src && state.station) {
-        const streamUrl = sanitizeStreamUrl(state.station.streamUrl);
-        if (streamUrl) {
-          audio.src = streamUrl;
-          audio.load();
-        }
+    } else if (!sourceRef.current) {
+      // Stopped: reattach the stream before playing
+      const streamUrl = sanitizeStreamUrl(state.station.streamUrl);
+      if (streamUrl) {
+        loadSource(streamUrl)
+          .then((loaded) => (loaded ? audio.play() : undefined))
+          .catch(() => {});
       }
+    } else {
       audio.play().catch(() => {});
     }
-  }, [state.isPlaying, state.station]);
+  }, [state.isPlaying, state.station, loadSource]);
 
   const setVolume = useCallback((volume: number) => {
     const audio = audioRef.current;

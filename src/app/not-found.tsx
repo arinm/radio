@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Pagina negasita',
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (

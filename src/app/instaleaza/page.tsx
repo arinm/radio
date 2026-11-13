@@ -15,9 +15,9 @@ import { SITE_NAME, SITE_URL } from '@/lib/constants';
 import { breadcrumbJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: `Instaleaza Aplicatia | ${SITE_NAME}`,
+  title: 'Instaleaza Aplicatia',
   description:
-    'Instaleaza Radio Online Romania pe telefon sau calculator. Acces rapid la toate posturile de radio, fara App Store, direct din browser.',
+    `Instaleaza ${SITE_NAME} pe telefon sau calculator. Acces rapid la toate posturile de radio, fara App Store, direct din browser.`,
   alternates: { canonical: `${SITE_URL}/instaleaza` },
 };
 

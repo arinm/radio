@@ -59,7 +59,7 @@ export function MobileMenu() {
           {/* Header */}
           <div className="flex h-16 items-center justify-between border-b border-border px-4">
             <span className="text-lg text-foreground">
-              <span className="font-bold">radio</span>vibe
+              <span className="font-bold">Radio</span>Vibe
             </span>
             <button
               onClick={closeMenu}

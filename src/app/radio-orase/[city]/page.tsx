@@ -12,6 +12,9 @@ import type { FAQItem } from '@/types';
 
 export const revalidate = 3600;
 
+// Only slugs from generateStaticParams exist; anything else is a real 404.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return CITIES.map((c) => ({ city: c.slug }));
 }
@@ -26,7 +29,7 @@ export async function generateMetadata({
   if (!city) return {};
 
   return {
-    title: `Radio Online din ${city.nameRo} - Posturi Radio Live ${city.nameRo} | ${SITE_NAME}`,
+    title: `Radio Online din ${city.nameRo} - Posturi Live`,
     description: city.description,
     alternates: { canonical: `${SITE_URL}/radio-orase/${city.slug}` },
     openGraph: {

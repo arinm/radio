@@ -17,35 +17,37 @@ export function ConsentBanner() {
     updateConsent({ analytics, marketing });
   };
 
+  // Kept compact on mobile: the banner paints after hydration, so if its text
+  // block is larger than the page's H1/intro it becomes the LCP element.
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[60] p-4" role="dialog" aria-label="Consimtamant cookie-uri">
+    <div className="fixed inset-x-0 bottom-0 z-[60] p-2 sm:p-4" role="dialog" aria-label="Consimtamant cookie-uri">
       <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
         {/* Main banner */}
         {!showSettings ? (
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             <div className="flex items-start gap-3">
-              <Shield className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <Shield className="mt-0.5 hidden h-5 w-5 shrink-0 text-primary sm:block" />
               <div className="flex-1">
-                <h2 className="text-base font-semibold text-card-foreground">
+                <h2 className="text-sm font-semibold text-card-foreground sm:text-base">
                   Respectam confidentialitatea dumneavoastra
                 </h2>
-                <p className="mt-1.5 text-sm text-muted-foreground">
-                  Folosim cookie-uri esentiale pentru functionarea site-ului. Cookie-urile de analiza
-                  si marketing sunt optionale si se activeaza doar cu acordul dumneavoastra.{' '}
+                <p className="mt-1 text-xs text-muted-foreground sm:mt-1.5 sm:text-sm">
+                  Cookie-urile de analiza si marketing se activeaza doar cu acordul
+                  dumneavoastra.{' '}
                   <Link href="/politica-cookies" className="text-primary underline">
                     Politica de cookie-uri
                   </Link>
                 </p>
-                <div className="mt-4 flex flex-wrap items-center gap-3">
+                <div className="mt-3 flex flex-wrap items-center gap-2 sm:mt-4 sm:gap-3">
                   <button
                     onClick={acceptAll}
-                    className="rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                    className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 sm:px-5 sm:py-2.5"
                   >
                     Accepta toate
                   </button>
                   <button
                     onClick={acceptNecessaryOnly}
-                    className="rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                    className="rounded-lg border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted sm:px-5 sm:py-2.5"
                   >
                     Doar esentiale
                   </button>

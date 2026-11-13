@@ -21,6 +21,8 @@ export interface BlogPost {
   sections: BlogSection[];
   conclusion: string;
   relatedSlugs?: string[];
+  /** GENRES keys this article covers; links both ways with /radio-genuri/[slug]. */
+  genreSlugs?: string[];
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -31,7 +33,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Descopera cele mai ascultate 10 posturi de radio din Romania in 2026. Kiss FM, Europa FM, Pro FM, Radio ZU si alte statii cu audienta record, toate live online.',
     publishedAt: '2026-04-15',
     updatedAt: '2026-06-26',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 8,
     tags: ['top', 'radiouri', '2026'],
     intro:
@@ -118,12 +120,13 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'radiouri-pop-romania',
+    genreSlugs: ['pop'],
     title: 'Cele Mai Bune Radiouri de Muzica Pop din Romania in 2026',
     description:
       'Ghid complet al posturilor de radio pop din Romania. Europa FM, Kiss FM, Pro FM, Virgin Radio si alte statii cu cele mai noi hituri pop internationale si romanesti.',
     publishedAt: '2026-04-10',
     updatedAt: '2026-04-15',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 7,
     tags: ['pop', 'radiouri', 'ghid'],
     intro:
@@ -191,7 +194,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Ghid pas cu pas pentru a asculta radio online pe telefon Android si iPhone. Streaming live, instalare PWA, mod offline si sfaturi pentru calitate audio optima.',
     publishedAt: '2026-04-08',
     updatedAt: '2026-04-15',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 6,
     tags: ['telefon', 'ghid', 'streaming'],
     intro:
@@ -259,7 +262,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Compara radio online cu Spotify in 2026. Avantaje, dezavantaje, costuri, experienta live, descoperire muzicala. Ce sa alegi in functie de nevoi.',
     publishedAt: '2026-04-05',
     updatedAt: '2026-04-15',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 8,
     tags: ['comparatie', 'spotify', 'streaming'],
     intro:
@@ -322,13 +325,13 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedSlugs: ['top-10-radiouri-romania-2026', 'asculta-radio-online-telefon'],
   },
   {
-    slug: 'istoria-radioulului-romanesc',
+    slug: 'istoria-radioului-romanesc',
     title: 'Istoria Radioului Romanesc: De la 1928 la Streaming in 2026',
     description:
       'Povestea radioului din Romania — de la primele transmisii SRR in 1928, prin epoca privatizarilor dupa 1990, pana la streaming online si podcast-uri in 2026.',
     publishedAt: '2026-03-30',
     updatedAt: '2026-04-15',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 9,
     tags: ['istorie', 'cultura', 'romania'],
     intro:
@@ -402,7 +405,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Descopera posturile radio ideale pentru fiecare moment al zilei: dimineata cu energie, drum cu ritm, noapte cu relaxare. Ghid complet pentru 2026.',
     publishedAt: '2026-03-25',
     updatedAt: '2026-04-15',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 7,
     tags: ['ghid', 'dimineata', 'drum', 'noapte'],
     intro:
@@ -477,7 +480,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Ghid cu cele mai ascultate emisiuni de radio din Romania: Morning ZU, Dimineata Pro FM, emisiunile de Europa FM si Kiss FM si altele.',
     publishedAt: '2026-03-20',
     updatedAt: '2026-04-15',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 7,
     tags: ['emisiuni', 'morning-shows', 'prezentatori'],
     intro:
@@ -534,12 +537,13 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'radiouri-rock-metal-romania',
+    genreSlugs: ['rock'],
     title: 'Radiouri de Rock si Metal in Romania — Ghid Complet 2026',
     description:
       'Ghid cu cele mai bune radiouri rock si metal din Romania. Rock FM, Radio Guerrilla, canale tematice hard rock si blues — toate live online.',
     publishedAt: '2026-03-15',
     updatedAt: '2026-04-15',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 6,
     tags: ['rock', 'metal', 'ghid'],
     intro:
@@ -593,12 +597,13 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'radio-manele-online-romania',
+    genreSlugs: ['manele'],
     title: 'Radio Manele Online — Unde Asculti Manele in 2026',
     description:
       'Lista completa cu posturi de radio manele online din Romania. National FM, FM Radio Manele, Radio 1 Manele si alte statii dedicate. Gratuit, 24/7.',
     publishedAt: '2026-03-10',
     updatedAt: '2026-04-15',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 6,
     tags: ['manele', 'ghid'],
     intro:
@@ -657,7 +662,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Ghid complet radio pe orase din Romania. Radio Cluj, Radio Timisoara, Napoca FM si cum asculti national si local din Bucuresti, Cluj, Iasi, Constanta.',
     publishedAt: '2026-03-05',
     updatedAt: '2026-04-15',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 7,
     tags: ['orase', 'local', 'national'],
     intro:
@@ -718,7 +723,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Ce melodii si artisti domina radioul din Romania in 2026 — de la INNA, Smiley si Carla’s Dreams la Dua Lipa si The Weeknd. Cum functioneaza Airplay 100 si Media Forest.',
     publishedAt: '2026-06-26',
     updatedAt: '2026-06-26',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 7,
     tags: ['melodii', 'airplay', 'top'],
     intro:
@@ -796,12 +801,13 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'radio-dance-electronica-online',
+    genreSlugs: ['dance'],
     title: 'Radio Dance si Electronica Online in Romania: Ghid Complet',
     description:
       'Ghid complet al posturilor de radio dance si electronica din Romania. Kiss FM, Dance FM, Deep House Radio, DJ Radio si alte statii cu house, techno si EDM, toate live online.',
     publishedAt: '2026-06-26',
     updatedAt: '2026-06-26',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 7,
     tags: ['dance', 'electronica', 'ghid'],
     intro:
@@ -852,7 +858,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: 'Cum asculti gratuit online',
         paragraphs: [
-          'Toate aceste posturi pot fi ascultate direct din browser, fara aplicatii suplimentare si fara cost. E suficient sa deschizi pagina statiei pe radiovibe si sa apesi play; streamul porneste in cateva secunde, indiferent daca esti pe laptop sau pe telefon.',
+          'Toate aceste posturi pot fi ascultate direct din browser, fara aplicatii suplimentare si fara cost. E suficient sa deschizi pagina statiei pe RadioVibe si sa apesi play; streamul porneste in cateva secunde, indiferent daca esti pe laptop sau pe telefon.',
           'Avantajul fata de radioul FM clasic este ca nu depinzi de acoperirea unei frecvente locale. Poti asculta Dance FM sau Napoca FM de oriunde din tara sau din strainatate, atata timp cat ai conexiune la internet.',
         ],
       },
@@ -867,12 +873,13 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'radio-stiri-online-romania',
+    genreSlugs: ['stiri'],
     title: 'Radio Stiri Online in Romania: Ghidul Posturilor de Informatii',
     description:
       'Ghid complet al posturilor de radio cu stiri din Romania. Digi FM, Radio Romania Actualitati, Realitatea FM, RFI Romania si alte statii de informatii, toate live online si gratuit.',
     publishedAt: '2026-06-26',
     updatedAt: '2026-06-26',
-    author: 'Echipa radiovibe',
+    author: 'Echipa RadioVibe',
     readingMinutes: 7,
     tags: ['stiri', 'informatii', 'ghid'],
     intro:
@@ -954,6 +961,10 @@ export const BLOG_POSTS: BlogPost[] = [
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
+}
+
+export function getPostsByGenre(genreSlug: string): BlogPost[] {
+  return BLOG_POSTS.filter((p) => p.genreSlugs?.includes(genreSlug));
 }
 
 export function getAllPosts(): BlogPost[] {

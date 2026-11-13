@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, openGraphMeta } from '@/lib/seo';
 
 export const revalidate = 86400;
 
-const BLOG_TITLE = `Blog Radio - Ghiduri, Topuri si Analize | ${SITE_NAME}`;
+const BLOG_TITLE = 'Blog Radio - Ghiduri, Topuri si Analize';
 const BLOG_DESCRIPTION =
   'Blog despre radioul romanesc: topuri cu cele mai bune posturi, ghiduri pentru ascultatori, analize si istoria radioului in Romania. Continut actualizat 2026.';
 

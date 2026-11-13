@@ -5,6 +5,7 @@ import { StationGrid } from '@/components/StationGrid';
 import { Pagination } from '@/components/Pagination';
 import { FAQSection } from '@/components/FAQSection';
 import { getStations, getGenresWithCounts } from '@/lib/stations';
+import { getPostsByGenre } from '@/lib/blog';
 import {
   genreTitle,
   genreDescription,
@@ -19,6 +20,9 @@ import {
 import { GENRES, SITE_URL, DEFAULT_PAGE_SIZE } from '@/lib/constants';
 
 export const revalidate = 300;
+
+// Only slugs from generateStaticParams exist; anything else is a real 404.
+export const dynamicParams = false;
 
 interface GenrePageProps {
   params: Promise<{ slug: string }>;
@@ -72,6 +76,9 @@ export default async function GenrePage({ params, searchParams }: GenrePageProps
   const page = Math.max(1, parseInt(pageStr || '1', 10) || 1);
   const result = await getStations({ genre: slug }, page, DEFAULT_PAGE_SIZE);
   const totalPages = Math.ceil(result.total / DEFAULT_PAGE_SIZE);
+  // The route renders dynamically (searchParams), so dynamicParams alone doesn't
+  // reject unknown params: a genre without stations is out of the sitemap and 404s.
+  if (totalPages === 0 || page > totalPages) notFound();
 
   const genre = {
     slug,
@@ -88,6 +95,7 @@ export default async function GenrePage({ params, searchParams }: GenrePageProps
   ];
 
   const genreFaqs = generateGenreFAQs(genre);
+  const guides = getPostsByGenre(slug);
 
   return (
     <>
@@ -155,6 +163,28 @@ export default async function GenrePage({ params, searchParams }: GenrePageProps
               basePath={`/radio-genuri/${slug}`}
             />
           </div>
+        )}
+
+        {guides.length > 0 && (
+          <section className="border-border mt-12 border-t pt-12">
+            <h2 className="text-foreground mb-4 text-xl font-bold">
+              Ghiduri despre radio {genre.nameRo.toLowerCase()}
+            </h2>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {guides.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="border-border bg-card hover:border-primary hover:bg-primary/5 rounded-lg border p-4 transition-colors"
+                >
+                  <h3 className="text-foreground font-semibold">{post.title}</h3>
+                  <p className="text-muted-foreground mt-1 line-clamp-2 text-sm">
+                    {post.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
         )}
 
         {/* FAQ Section */}

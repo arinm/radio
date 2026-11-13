@@ -125,7 +125,7 @@ export function InstallBanner() {
           </div>
           <div className="flex-1 pr-6">
             <p className="text-sm font-medium text-foreground">
-              Instaleaza radiovibe
+              Instaleaza RadioVibe
             </p>
             <p className="text-xs text-muted-foreground">
               Acces rapid de pe ecranul principal

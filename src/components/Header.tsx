@@ -5,18 +5,19 @@ import { Radio } from 'lucide-react';
 import { SearchBar } from './SearchBar';
 import { ThemeToggle } from './ThemeToggle';
 import { MobileMenu } from './MobileMenu';
+import { SITE_NAME } from '@/lib/constants';
 
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4">
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Radio Online Romania - Acasa">
+        <Link href="/" className="flex shrink-0 items-center gap-2" aria-label={`${SITE_NAME} - Acasa`}>
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
             <Radio className="h-4 w-4 text-primary-foreground" />
           </div>
           <span className="hidden text-lg text-foreground sm:inline">
-            <span className="font-bold">radio</span>vibe
+            <span className="font-bold">Radio</span>Vibe
           </span>
         </Link>
 

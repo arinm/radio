@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 import { CITIES } from '@/lib/cities';
-import { SITE_URL, SITE_NAME } from '@/lib/constants';
+import { SITE_URL } from '@/lib/constants';
 import { breadcrumbJsonLd, openGraphMeta } from '@/lib/seo';
 
 export const revalidate = 86400;
 
-const CITIES_TITLE = `Radio Online pe Orase - Asculta Radio Live din Orasul Tau | ${SITE_NAME}`;
+const CITIES_TITLE = 'Radio Online pe Orase - Asculta Radio Live din Orasul Tau';
 const CITIES_DESCRIPTION =
   'Asculta radio online pe orase din Romania: Bucuresti, Cluj-Napoca, Timisoara, Iasi, Constanta, Brasov si multe altele. Posturi locale si nationale live, gratuit.';
 

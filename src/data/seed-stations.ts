@@ -436,7 +436,7 @@ export const seedStations: SeedStation[] = [
     homepage: 'https://www.radiotrinitas.ro',
     description:
       'Radio Trinitas - postul de radio al Patriarhiei Romane. Muzica religioasa, emisiuni crestine.',
-    genres: ['religioas'],
+    genres: ['religios'],
     city: 'Bucuresti',
     region: 'Bucuresti',
     language: 'ro',

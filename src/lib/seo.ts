@@ -7,12 +7,16 @@ import {
   ORG_LEGAL_NAME,
   ORG_LOGO_URL,
   ORG_SAME_AS,
+  CONTACT_EMAIL,
 } from './constants';
 import type { Station, Genre, FAQItem } from '@/types';
 
 // Stable @id for the brand Organization entity, referenced across pages so
 // search engines and AI crawlers resolve every mention to one entity.
-const ORG_ID = `${SITE_URL}/#organization`;
+export const ORG_ID = `${SITE_URL}/#organization`;
+
+// Fallback social card for pages without an image of their own
+export const DEFAULT_OG_IMAGE = { url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 };
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
 /**
@@ -20,29 +24,32 @@ const WEBSITE_ID = `${SITE_URL}/#website`;
  * and Open Graph tags for all page types.
  */
 
-// Title patterns
+// Title patterns. The root layout's template appends ` | ${SITE_NAME}`, so
+// these return the page part only (except homeTitle, used as an absolute title).
 export function stationTitle(station: Station): string {
   const city = station.city ? ` din ${station.city}` : '';
-  return `${station.name}${city} - Asculta Live Online | ${SITE_NAME}`;
+  return `${station.name}${city} - Asculta Live Online`;
 }
 
+// Kept short so that, with the template suffix, the longest genre name
+// ("Dance / Electronica") still fits in 60 characters.
 export function genreTitle(genre: Genre): string {
-  return `Radio ${genre.nameRo} Online - Posturi de Radio ${genre.nameRo} | ${SITE_NAME}`;
+  return `Radio ${genre.nameRo} Online - Posturi Live`;
 }
 
 export function homeTitle(): string {
-  return `${SITE_NAME} - Asculta Radio Live din Romania`;
+  return `Radio Online Romania - Asculta Radio Live | ${SITE_NAME}`;
 }
 
 export function browseTitle(): string {
-  return `Toate Posturile Radio Online | ${SITE_NAME}`;
+  return 'Toate Posturile Radio Online';
 }
 
 // Description patterns
 export function stationDescription(station: Station): string {
   const genres = station.genres.length > 0 ? ` - ${station.genres.join(', ')}` : '';
   const city = station.city ? ` din ${station.city}` : '';
-  return `Asculta ${station.name}${city} live online, gratuit si fara reclame${genres}. Apasa play si bucura-te de muzica preferata, non-stop, 24/7.`.slice(
+  return `Asculta ${station.name}${city} live online, gratuit${genres}. Apasa play si bucura-te de muzica preferata, non-stop, 24/7.`.slice(
     0,
     160,
   );
@@ -53,6 +60,11 @@ export function genreDescription(genre: Genre): string {
     0,
     160,
   );
+}
+
+/** Resolve a site-relative path (e.g. `/logos/x.png`) to an absolute URL. */
+export function absoluteUrl(url: string): string {
+  return url.startsWith('/') ? `${SITE_URL}${url}` : url;
 }
 
 // Canonical URLs
@@ -94,6 +106,14 @@ export function organizationJsonLd() {
       url: ORG_LOGO_URL,
     },
     description: SITE_DESCRIPTION,
+    email: CONTACT_EMAIL,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: CONTACT_EMAIL,
+      url: `${SITE_URL}/contact`,
+      availableLanguage: ['ro'],
+    },
     ...(ORG_SAME_AS.length > 0 && { sameAs: ORG_SAME_AS }),
   };
 }
@@ -113,8 +133,8 @@ export function stationJsonLd(station: Station) {
     url: stationCanonical(station.slug),
     description: station.description || `Asculta ${station.name} live online`,
     ...(station.logoUrl && {
-      logo: station.logoUrl,
-      image: station.logoUrl,
+      logo: absoluteUrl(station.logoUrl),
+      image: absoluteUrl(station.logoUrl),
     }),
     ...(station.homepage && { sameAs: station.homepage }),
     ...(station.city && {
@@ -166,6 +186,7 @@ export function websiteJsonLd() {
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
     name: SITE_NAME,
+    alternateName: 'radiovibe.ro',
     url: SITE_URL,
     description: SITE_DESCRIPTION,
     inLanguage: 'ro-RO',
@@ -218,6 +239,8 @@ export function stationListJsonLd(stations: Station[], listName: string, listUrl
 
 /**
  * Generate OpenGraph metadata object for Next.js metadata API.
+ * A page-level `openGraph` replaces the layout's, so always emit an image:
+ * the 1200x630 site card by default, or the given image (size unknown).
  */
 export function openGraphMeta({
   title,
@@ -237,7 +260,9 @@ export function openGraphMeta({
     siteName: SITE_NAME,
     locale: 'ro_RO',
     type: 'website' as const,
-    ...(image && { images: [{ url: image, width: 1200, height: 630, alt: title }] }),
+    images: image
+      ? [{ url: absoluteUrl(image), alt: title }]
+      : [{ ...DEFAULT_OG_IMAGE, alt: title }],
   };
 }
 
@@ -284,7 +309,7 @@ export function generateHomeFAQs(stationCount: number): FAQItem[] {
     {
       question: 'Ce genuri de radio sunt disponibile?',
       answer:
-        'Avem posturi de radio din toate genurile: pop, rock, manele, muzica populara, dance, hip-hop, jazz, muzica clasica, stiri, sport si multe altele.',
+        'Avem posturi de radio din toate genurile: pop, rock, manele, muzica populara, dance, jazz, muzica clasica, stiri, sport si multe altele.',
     },
     {
       question: 'Cum caut un post de radio anume?',

@@ -15,7 +15,7 @@ export function Footer() {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
                 <Radio className="h-4 w-4 text-primary-foreground" />
               </div>
-              <span className="text-lg text-foreground"><span className="font-bold">radio</span>vibe</span>
+              <span className="text-lg text-foreground"><span className="font-bold">Radio</span>Vibe</span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground">
               Asculta cele mai bune posturi de radio din Romania, live si gratuit. Muzica, stiri, sport si divertisment.
@@ -24,7 +24,7 @@ export function Footer() {
 
           {/* Browse */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Descopera</h3>
+            <p className="text-sm font-semibold text-foreground">Descopera</p>
             <ul className="mt-3 space-y-2">
               <li>
                 <Link href="/cauta-radio-romania" className="text-sm text-muted-foreground hover:text-foreground">
@@ -61,7 +61,7 @@ export function Footer() {
 
           {/* Popular Genres */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Genuri populare</h3>
+            <p className="text-sm font-semibold text-foreground">Genuri populare</p>
             <ul className="mt-3 space-y-2">
               <li>
                 <Link href="/radio-genuri/pop" className="text-sm text-muted-foreground hover:text-foreground">
@@ -91,10 +91,20 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* About + legal */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Legal</h3>
+            <p className="text-sm font-semibold text-foreground">Informatii</p>
             <ul className="mt-3 space-y-2">
+              <li>
+                <Link href="/despre" className="text-sm text-muted-foreground hover:text-foreground">
+                  Despre noi
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground">
+                  Contact
+                </Link>
+              </li>
               <li>
                 <Link href="/politica-confidentialitate" className="text-sm text-muted-foreground hover:text-foreground">
                   Politica de confidentialitate

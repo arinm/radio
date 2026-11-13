@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: StationPageProps): Promise<Me
   const { slug: urlSlug } = await params;
   const dbSlug = getDbSlug(urlSlug);
   const station = await getStationBySlug(dbSlug);
-  if (!station) return { title: 'Post de radio negasit' };
+  if (!station || !station.isActive) return { title: 'Post de radio negasit' };
 
   const title = stationTitle(station);
   const description = stationDescription(station);
@@ -67,7 +67,8 @@ export default async function StationPage({ params }: StationPageProps) {
   const { slug: urlSlug } = await params;
   const dbSlug = getDbSlug(urlSlug);
   const station = await getStationBySlug(dbSlug);
-  if (!station) notFound();
+  // Unknown or deactivated station: real 404 (no loading.tsx, so the status sticks)
+  if (!station || !station.isActive) notFound();
 
   const similarStations = await getSimilarStations(station);
 

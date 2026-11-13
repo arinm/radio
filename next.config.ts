@@ -81,6 +81,12 @@ const nextConfig: NextConfig = {
         destination: '/radio/:slug-online',
         permanent: true,
       },
+      // Renamed genre; listed before the /genre and /gen rules so old URLs take one hop
+      {
+        source: '/:prefix(radio-genuri|genre|gen)/religioas',
+        destination: '/radio-genuri/religios',
+        permanent: true,
+      },
       {
         source: '/genre',
         destination: '/radio-genuri',
@@ -114,6 +120,18 @@ const nextConfig: NextConfig = {
       {
         source: '/search',
         destination: '/cauta',
+        permanent: true,
+      },
+      // Renamed slugs
+      {
+        source: '/blog/istoria-radioulului-romanesc',
+        destination: '/blog/istoria-radioului-romanesc',
+        permanent: true,
+      },
+      // Station URLs always end in -online; the lookahead keeps this from looping.
+      {
+        source: '/radio/:slug((?!.*-online$)[^/]+)',
+        destination: '/radio/:slug-online',
         permanent: true,
       },
     ];

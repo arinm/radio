@@ -6,14 +6,21 @@ import { GenreStories } from '@/components/GenreStories';
 import { FavoritesRow } from '@/components/FavoritesRow';
 import { getAllActiveStations, getGenresWithCounts, getStationCount } from '@/lib/stations';
 import { FAQSection } from '@/components/FAQSection';
-import { websiteJsonLd, organizationJsonLd, faqJsonLd, generateHomeFAQs } from '@/lib/seo';
-import { SITE_NAME, BRAND_NAME, SITE_URL, SITE_DESCRIPTION, GENRES } from '@/lib/constants';
+import {
+  websiteJsonLd,
+  organizationJsonLd,
+  faqJsonLd,
+  generateHomeFAQs,
+  homeTitle,
+} from '@/lib/seo';
+import { BRAND_NAME, SITE_URL, SITE_DESCRIPTION } from '@/lib/constants';
 
 // Revalidate every 5 minutes (CACHE_TTL.STATION_LIST = 300)
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} - Asculta Radio Live din Romania`,
+  // Absolute: homeTitle() already carries the brand, so skip the layout template.
+  title: { absolute: homeTitle() },
   description: SITE_DESCRIPTION,
   alternates: { canonical: SITE_URL },
 };
@@ -90,10 +97,11 @@ export default async function HomePage() {
           Genuri populare de radio
         </h2>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {Object.entries(GENRES).map(([slug, genre]) => (
+          {/* Same source as the sitemap and genre static params: only genres with stations */}
+          {genres.map((genre) => (
             <Link
-              key={slug}
-              href={`/radio-genuri/${slug}`}
+              key={genre.slug}
+              href={`/radio-genuri/${genre.slug}`}
               className="border-border bg-card text-foreground hover:border-primary hover:bg-primary/5 rounded-lg border px-4 py-3 text-center text-sm font-medium transition-colors"
             >
               {genre.nameRo}
@@ -109,8 +117,8 @@ export default async function HomePage() {
           <div className="text-muted-foreground mt-4 max-w-3xl space-y-3 text-sm leading-relaxed">
             <p>
               {BRAND_NAME} este platforma ta de radio online unde poti asculta cele mai bune posturi
-              de radio din Romania. Fie ca preferi muzica pop, rock, manele, muzica populara, dance,
-              hip-hop sau stiri, gasesti toate posturile tale favorite intr-un singur loc. Avem
+              de radio din Romania. Fie ca preferi muzica pop, rock, manele, muzica populara, dance
+              sau stiri, gasesti toate posturile tale favorite intr-un singur loc. Avem
               peste {stationCount} posturi de radio romanesti disponibile pentru streaming live.
             </p>
             <p>
@@ -126,7 +134,7 @@ export default async function HomePage() {
               Descopera posturi de radio din cele mai populare genuri muzicale din Romania: radio
               pop cu hiturile momentului, radio rock cu muzica clasica si alternativa, radio manele
               cu cele mai noi piese, radio muzica populara si folclor romanesc, radio dance si
-              electronica, radio hip-hop si rap, radio jazz si blues, radio retro cu hituri din anii
+              electronica, radio jazz si blues, radio retro cu hituri din anii
               80 si 90, si posturi de stiri cu informatii in timp real.
             </p>
 

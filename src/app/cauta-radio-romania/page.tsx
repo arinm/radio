@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { StationGrid } from '@/components/StationGrid';
 import { Pagination } from '@/components/Pagination';
 import { getStations } from '@/lib/stations';
@@ -34,6 +35,7 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
   const page = Math.max(1, parseInt(pageStr || '1', 10) || 1);
   const result = await getStations({}, page, DEFAULT_PAGE_SIZE);
   const totalPages = Math.ceil(result.total / DEFAULT_PAGE_SIZE);
+  if (page > Math.max(1, totalPages)) notFound();
 
   const breadcrumbs = [
     { name: 'Acasa', url: SITE_URL },

@@ -9,6 +9,7 @@ import { ConsentBanner } from '@/components/ConsentBanner';
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
 import { AnalyticsWrapper } from '@/components/AnalyticsWrapper';
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, DEFAULT_LANGUAGE } from '@/lib/constants';
+import { DEFAULT_OG_IMAGE, homeTitle } from '@/lib/seo';
 import './globals.css';
 
 const inter = Inter({
@@ -20,7 +21,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} - Asculta Radio Live din Romania`,
+    default: homeTitle(),
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -53,22 +54,20 @@ export const metadata: Metadata = {
     locale: 'ro_RO',
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} - Asculta Radio Live din Romania`,
+    title: homeTitle(),
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
+        ...DEFAULT_OG_IMAGE,
         alt: `${SITE_NAME} - Radio Online Romania`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_NAME} - Asculta Radio Live din Romania`,
+    title: homeTitle(),
     description: SITE_DESCRIPTION,
-    images: ['/og-image.png'],
+    images: [DEFAULT_OG_IMAGE.url],
   },
   robots: {
     index: true,
@@ -90,7 +89,7 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: 'radiovibe',
+    title: SITE_NAME,
     statusBarStyle: 'default',
   },
   icons: {

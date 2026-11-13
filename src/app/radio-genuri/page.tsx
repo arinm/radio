@@ -8,7 +8,7 @@ export const revalidate = 3600;
 
 const GENRES_TITLE = `Genuri de Radio Online - Descopera Posturi Preferate`;
 const GENRES_DESCRIPTION =
-  'Descopera posturi de radio online din Romania pe genuri muzicale: pop, rock, manele, muzica populara, dance, hip-hop, jazz, stiri si multe altele. Gratuit, 24/7.';
+  'Descopera posturi de radio online din Romania pe genuri muzicale: pop, rock, manele, muzica populara, dance, jazz, stiri si multe altele. Gratuit, 24/7.';
 
 export const metadata: Metadata = {
   title: GENRES_TITLE,
@@ -59,7 +59,7 @@ export default async function GenresPage() {
             Platforma noastra ofera o varietate de genuri muzicale pentru toate gusturile. De la
             radio pop cu cele mai noi hituri romanesti si internationale, la radio rock cu muzica
             clasica si alternativa, radio manele, muzica populara si folclor romanesc, dance si
-            electronica, hip-hop si rap, jazz si blues, muzica clasica, si posturi de radio cu stiri
+            electronica, jazz si blues, muzica clasica, si posturi de radio cu stiri
             si informatii din Romania.
           </p>
           <p>

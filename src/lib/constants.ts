@@ -1,5 +1,5 @@
-export const SITE_NAME = 'Radio Online Romania';
-export const BRAND_NAME = 'radiovibe';
+export const SITE_NAME = 'RadioVibe';
+export const BRAND_NAME = SITE_NAME;
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://radiovibe.ro';
 export const SITE_DESCRIPTION =
   'Asculta radio online din Romania gratuit. Peste 60 de posturi de radio romanesti live — muzica pop, rock, manele, dance, stiri si sport, 24/7, fara inregistrare.';
@@ -8,7 +8,8 @@ export const DEFAULT_LOCALE = 'ro';
 export const DEFAULT_LANGUAGE = 'ro-RO';
 
 // Brand entity (used for Organization JSON-LD / brand SEO + Knowledge Panel)
-export const ORG_LEGAL_NAME = 'radiovibe';
+export const ORG_LEGAL_NAME = SITE_NAME;
+export const CONTACT_EMAIL = 'contact@arinitsolutions.com';
 export const ORG_LOGO_URL = `${SITE_URL}/icons/icon-512x512.png`;
 // Public social/brand profiles for schema.org `sameAs`. Add real URLs as they
 // go live (Facebook, Instagram, YouTube, Wikidata, etc.). Empty = omitted.
@@ -101,7 +102,7 @@ export const GENRES: Record<string, { name: string; nameRo: string; description:
     nameRo: 'Sport',
     description: 'Radio sport - comentarii live si dezbateri sportive',
   },
-  religioas: {
+  religios: {
     name: 'Religious',
     nameRo: 'Religios',
     description: 'Posturi de radio cu muzica si emisiuni religioase',
